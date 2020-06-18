@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Popup from "reactjs-popup";
 import TodoList from "./list-item.component";
 import DateTimePicker from "react-datetime-picker";
+import "./styles/popup.css";
 
 export default class AddTodo extends Component {
     constructor(props) {
@@ -74,11 +75,7 @@ export default class AddTodo extends Component {
     render() {
         return (
             <>
-                <Popup
-                    trigger={<button>CREATE TODO</button>}
-                    modal
-                    closeOnDocumentClick
-                >
+                <Popup trigger={<button>CREATE TODO</button>} modal>
                     {(close) => (
                         <>
                             <DateTimePicker

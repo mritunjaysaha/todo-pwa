@@ -13,11 +13,11 @@ export default function TodoList(props) {
                     Task: {todo.text}
                     <span>
                         <p>Deadline: {todo.date.toLocaleString()}</p>
-                        <p>counter</p>
                         <Counter date={todo.date} />
                         <button onClick={() => props.deleteItem(todo.key)}>
                             DEL
                         </button>
+                        <button>Completed</button>
                     </span>
                 </p>
             </div>
