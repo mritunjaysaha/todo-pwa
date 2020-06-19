@@ -45,6 +45,7 @@ export default class AddTodo extends Component {
         }
         this.setState({
             date,
+            currentItem: { date: date },
         });
     }
     addTodo(e) {
@@ -59,8 +60,12 @@ export default class AddTodo extends Component {
         const newItem = this.state.currentItem;
         if (newItem.text !== "") {
             const items = [...this.state.items, newItem];
-
-            // setItem(items);
+            const currentDate = new Date();
+            if (currentDate > this.state.date) {
+                alert("Select a valid date");
+                this.setState({ date: new Date() });
+                return;
+            }
             this.setState({
                 items: items,
                 currentItem: { text: "", key: "" },

@@ -3,7 +3,8 @@ import AddTodo from "./components/add-todo.component";
 function App() {
     return (
         <>
-            <h3>Todo | Completed</h3>
+            <h3>Todo</h3>
+            <p>Active | Completed | Missed</p>
             <AddTodo />
             <hr />
         </>
