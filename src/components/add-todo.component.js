@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Popup from "reactjs-popup";
 import TodoList from "./list-item.component";
-import DateTimePicker from "react-datetime-picker";
-import "./styles/popup.css";
+// import DateTimePicker from "react-datetime-picker";
+import DateFnsUtils from "@date-io/date-fns"; // choose your lib
 
+import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 export default class AddTodo extends Component {
     constructor(props) {
         super(props);
@@ -78,10 +79,16 @@ export default class AddTodo extends Component {
                 <Popup trigger={<button>CREATE TODO</button>} modal>
                     {(close) => (
                         <>
-                            <DateTimePicker
+                            {/* <DateTimePicker
                                 onChange={this.handleDate}
                                 value={this.state.date}
-                            />
+                            /> */}
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <DateTimePicker
+                                    value={this.state.date}
+                                    onChange={this.handleDate}
+                                />
+                            </MuiPickersUtilsProvider>
                             <input type="text" onChange={this.handleInput} />
 
                             <button onClick={this.addTodo}>Add</button>
