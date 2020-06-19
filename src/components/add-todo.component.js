@@ -28,7 +28,6 @@ export default class AddTodo extends Component {
         this.setState({ date: new Date() });
     }
     handleInput(e) {
-        e.preventDefault();
         this.setState({
             currentItem: {
                 text: e.target.value,
@@ -38,6 +37,12 @@ export default class AddTodo extends Component {
         });
     }
     handleDate(date) {
+        const currentDate = new Date();
+        if (currentDate > date) {
+            alert("Select a valid date");
+            this.setState({ date: new Date() });
+            return;
+        }
         this.setState({
             date,
         });
@@ -54,9 +59,6 @@ export default class AddTodo extends Component {
         const newItem = this.state.currentItem;
         if (newItem.text !== "") {
             const items = [...this.state.items, newItem];
-            console.log("newItem: ", newItem);
-            console.log("items: ", items);
-            console.log("this.state.items: ", this.state.items);
 
             // setItem(items);
             this.setState({
@@ -79,10 +81,6 @@ export default class AddTodo extends Component {
                 <Popup trigger={<button>CREATE TODO</button>} modal>
                     {(close) => (
                         <>
-                            {/* <DateTimePicker
-                                onChange={this.handleDate}
-                                value={this.state.date}
-                            /> */}
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                 <DateTimePicker
                                     value={this.state.date}
