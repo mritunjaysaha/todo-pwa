@@ -3,17 +3,18 @@ import Counter from "./counter.component";
 
 export default function TodoList(props) {
     const todos = props.list;
-    // console.log("todos: ", todos);
-
+    console.log("todos", todos);
+    if (todos.length > 0) {
+        todos.map((todo) => console.log(todo));
+    }
     const todoItems = todos.map((todo) => {
-        console.log("date: ", todo.date);
         return (
             <div>
                 <p>
                     Task: {todo.text}
                     <span>
-                        <p>Deadline: {todo.date.toLocaleString()}</p>
-                        <Counter date={todo.date} />
+                        <p>Deadline: {todo.deadline.toLocaleString()}</p>
+                        <Counter date={todo.deadline} />
                         <button onClick={() => props.deleteItem(todo.key)}>
                             DEL
                         </button>
@@ -24,5 +25,10 @@ export default function TodoList(props) {
         );
     });
 
-    return <>{todoItems}</>;
+    return (
+        <>
+            {/* <p>Hello, World!</p> */}
+            {todoItems}
+        </>
+    );
 }

@@ -14,7 +14,7 @@ export default class AddTodo extends Component {
             currentItem: {
                 text: "",
                 key: "",
-                date: "",
+                deadline: "",
             },
         };
 
@@ -26,13 +26,29 @@ export default class AddTodo extends Component {
 
     componentDidMount() {
         this.setState({ date: new Date() });
+
+        console.log("getItem(): ", JSON.parse(localStorage.getItem("todo")));
+
+        const storage = JSON.parse(localStorage.getItem("todo"));
+        if (storage !== null) {
+            console.log("storage:", storage);
+            console.log("storage:", storage[0]);
+            this.setState({ items: storage[0] });
+            console.log("item updated: ", this.state.items);
+        }
+    }
+    componentDidUpdate() {
+        if (this.state.items.length > 0) {
+            console.log("items: ", this.state.items);
+            localStorage.setItem("todo", JSON.stringify(this.state.items));
+        }
     }
     handleInput(e) {
         this.setState({
             currentItem: {
                 text: e.target.value,
                 key: new Date(),
-                date: this.state.date,
+                deadline: this.state.date,
             },
         });
     }
@@ -45,7 +61,7 @@ export default class AddTodo extends Component {
         }
         this.setState({
             date,
-            currentItem: { date: date },
+            currentItem: { deadline: date },
         });
     }
     addTodo(e) {
@@ -54,7 +70,7 @@ export default class AddTodo extends Component {
             currentItem: {
                 text: this.state.currentItem.text,
                 key: new Date(),
-                date: this.state.date,
+                deadline: this.state.date,
             },
         });
         const newItem = this.state.currentItem;
@@ -70,6 +86,11 @@ export default class AddTodo extends Component {
                 items: items,
                 currentItem: { text: "", key: "" },
             });
+
+            if (this.state.items.length > 0) {
+                console.log("items: ", this.state.items);
+            }
+            // localStorage.setItem("todo", this.state.items);
         }
     }
 
@@ -101,7 +122,6 @@ export default class AddTodo extends Component {
                         </>
                     )}
                 </Popup>
-
                 <TodoList
                     list={this.state.items}
                     deleteItem={this.deleteTodo}
