@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import Popup from "reactjs-popup";
 import TodoList from "./list-item.component";
-// import DateTimePicker from "react-datetime-picker";
-import DateFnsUtils from "@date-io/date-fns"; // choose your lib
-
+import DateFnsUtils from "@date-io/date-fns";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { set, get } from "idb-keyval";
+
 export default class AddTodo extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            fetchData: false,
             date: new Date(),
             items: [],
             currentItem: {
                 text: "",
                 key: "",
                 deadline: "",
+                completed: false,
+                active: true,
+                missed: false,
             },
         };
 
@@ -27,22 +31,22 @@ export default class AddTodo extends Component {
     componentDidMount() {
         this.setState({ date: new Date() });
 
-        console.log("getItem(): ", JSON.parse(localStorage.getItem("todo")));
-
-        const storage = JSON.parse(localStorage.getItem("todo"));
-        if (storage !== null) {
-            console.log("storage:", storage);
-            console.log("storage:", storage[0]);
-            this.setState({ items: storage[0] });
-            console.log("item updated: ", this.state.items);
-        }
+        get("todo").then((res) => {
+            console.log(res);
+            this.setState({ items: res });
+            console.log(this.state.items);
+            this.setState({ fetchData: true });
+        });
+        console.log(this.state.items);
     }
     componentDidUpdate() {
-        if (this.state.items.length > 0) {
-            console.log("items: ", this.state.items);
-            localStorage.setItem("todo", JSON.stringify(this.state.items));
+        const items = this.state.items;
+
+        if (this.state.fetchData === true) {
+            set("todo", items);
         }
     }
+
     handleInput(e) {
         this.setState({
             currentItem: {
@@ -90,7 +94,6 @@ export default class AddTodo extends Component {
             if (this.state.items.length > 0) {
                 console.log("items: ", this.state.items);
             }
-            // localStorage.setItem("todo", this.state.items);
         }
     }
 
