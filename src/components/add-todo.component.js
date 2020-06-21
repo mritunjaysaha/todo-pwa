@@ -9,7 +9,6 @@ export default class AddTodo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fetchData: false,
             date: new Date(),
             items: [],
             currentItem: {
@@ -32,17 +31,21 @@ export default class AddTodo extends Component {
         this.setState({ date: new Date() });
 
         get("todo").then((res) => {
-            console.log(res);
-            this.setState({ items: res });
-            console.log(this.state.items);
-            this.setState({ fetchData: true });
+            console.log("res ", res);
+
+            if (res == null) {
+                console.log("indexedDB is empty");
+            } else {
+                this.setState({ items: res });
+                console.log(this.state.items);
+            }
         });
         console.log(this.state.items);
     }
     componentDidUpdate() {
         const items = this.state.items;
 
-        if (this.state.fetchData === true) {
+        if (this.state.isTodo === true) {
             set("todo", items);
         }
     }
@@ -77,6 +80,7 @@ export default class AddTodo extends Component {
                 deadline: this.state.date,
             },
         });
+
         const newItem = this.state.currentItem;
         if (newItem.text !== "") {
             const items = [...this.state.items, newItem];
@@ -101,6 +105,7 @@ export default class AddTodo extends Component {
         const filteredList = this.state.items.filter(
             (item) => item.key !== key
         );
+
         this.setState({ items: filteredList });
     }
 
@@ -125,10 +130,15 @@ export default class AddTodo extends Component {
                         </>
                     )}
                 </Popup>
-                <TodoList
-                    list={this.state.items}
-                    deleteItem={this.deleteTodo}
-                />
+
+                {this.state.items.length > 0 ? (
+                    <TodoList
+                        list={this.state.items}
+                        deleteItem={this.deleteTodo}
+                    />
+                ) : (
+                    <p>Add Todo</p>
+                )}
             </>
         );
     }

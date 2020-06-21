@@ -4,9 +4,7 @@ import Counter from "./counter.component";
 export default function TodoList(props) {
     const todos = props.list;
     console.log("todos", todos);
-    if (todos.length > 0) {
-        todos.map((todo) => console.log(todo));
-    }
+
     const todoItems = todos.map((todo) => {
         return (
             <div>
