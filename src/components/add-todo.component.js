@@ -1,145 +1,95 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Popup from "reactjs-popup";
 import TodoList from "./list-item.component";
 import DateFnsUtils from "@date-io/date-fns";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { set, get } from "idb-keyval";
+import { da } from "date-fns/locale";
 
-export default class AddTodo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            date: new Date(),
-            items: [],
-            currentItem: {
-                text: "",
-                key: "",
-                deadline: "",
-                completed: false,
-                active: true,
-                missed: false,
-            },
-        };
+export default function AddTodo() {
+    const [date, setDate] = useState(new Date());
+    const [items, setItems] = useState([]);
+    const [currentItem, setCurrentItem] = useState({
+        text: "",
+        key: "",
+        deadline: "",
+        active: "",
+        completed: "",
+        missed: "",
+    });
+    const [active, setActive] = useState(true);
+    const [missed, setMissed] = useState(false);
+    const [completed, setCompleted] = useState(false);
 
-        this.handleDate = this.handleDate.bind(this);
-        this.handleInput = this.handleInput.bind(this);
-        this.addTodo = this.addTodo.bind(this);
-        this.deleteTodo = this.deleteTodo.bind(this);
-    }
-
-    componentDidMount() {
-        this.setState({ date: new Date() });
-
-        get("todo").then((res) => {
-            console.log("res ", res);
-
-            if (res == null) {
-                console.log("indexedDB is empty");
-            } else {
-                this.setState({ items: res });
-                console.log(this.state.items);
-            }
-        });
-        console.log(this.state.items);
-    }
-    componentDidUpdate() {
-        const items = this.state.items;
-
-        if (this.state.isTodo === true) {
-            set("todo", items);
-        }
-    }
-
-    handleInput(e) {
-        this.setState({
-            currentItem: {
-                text: e.target.value,
-                key: new Date(),
-                deadline: this.state.date,
-            },
-        });
-    }
-    handleDate(date) {
-        const currentDate = new Date();
-        if (currentDate > date) {
-            alert("Select a valid date");
-            this.setState({ date: new Date() });
-            return;
-        }
-        this.setState({
-            date,
-            currentItem: { deadline: date },
-        });
-    }
-    addTodo(e) {
+    function handleInput(e) {
         e.preventDefault();
-        this.setState({
-            currentItem: {
-                text: this.state.currentItem.text,
-                key: new Date(),
-                deadline: this.state.date,
-            },
+        setCurrentItem({
+            text: e.target.value,
+            key: new Date(),
+            deadline: date,
+            active: active,
+            completed: completed,
+            missed: missed,
         });
+    }
 
-        const newItem = this.state.currentItem;
+    function handleDate(date) {
+        setDate(date);
+    }
+
+    function addTask() {
+        setCurrentItem({
+            text: currentItem.text,
+            key: new Date(),
+            deadline: date,
+            active: active,
+            completed: completed,
+            missed: missed,
+        });
+        const newItem = currentItem;
         if (newItem.text !== "") {
-            const items = [...this.state.items, newItem];
+            const data = [...items, newItem];
+            setItems(data);
+
             const currentDate = new Date();
-            if (currentDate > this.state.date) {
+
+            if (currentDate > date) {
                 alert("Select a valid date");
-                this.setState({ date: new Date() });
                 return;
             }
-            this.setState({
-                items: items,
-                currentItem: { text: "", key: "" },
-            });
-
-            if (this.state.items.length > 0) {
-                console.log("items: ", this.state.items);
-            }
         }
     }
 
-    deleteTodo(key) {
-        const filteredList = this.state.items.filter(
-            (item) => item.key !== key
-        );
-
-        this.setState({ items: filteredList });
+    function deleteTodo(key) {
+        const filteredItems = items.filter((item) => item.key !== key);
+        setItems(filteredItems);
     }
+    return (
+        <>
+            <Popup trigger={<button>CREATE TODO</button>} modal>
+                {(close) => (
+                    <>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <DateTimePicker
+                                value={date}
+                                onChange={handleDate}
+                            />
+                        </MuiPickersUtilsProvider>
+                        <input type="text" onChange={handleInput} />
 
-    render() {
-        return (
-            <>
-                <Popup trigger={<button>CREATE TODO</button>} modal>
-                    {(close) => (
-                        <>
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <DateTimePicker
-                                    value={this.state.date}
-                                    onChange={this.handleDate}
-                                />
-                            </MuiPickersUtilsProvider>
-                            <input type="text" onChange={this.handleInput} />
-
-                            <button onClick={this.addTodo}>Add</button>
-                            <button className="close" onClick={close}>
-                                &times;
-                            </button>
-                        </>
-                    )}
-                </Popup>
-
-                {this.state.items.length > 0 ? (
-                    <TodoList
-                        list={this.state.items}
-                        deleteItem={this.deleteTodo}
-                    />
-                ) : (
-                    <p>Add Todo</p>
+                        <button onClick={addTask}>Add</button>
+                        <button className="close" onClick={close}>
+                            &times;
+                        </button>
+                    </>
                 )}
-            </>
-        );
-    }
+            </Popup>
+
+            {items.length > 0 ? (
+                <TodoList list={items} deleteItem={deleteTodo} />
+            ) : (
+                <p>Add Todo</p>
+            )}
+        </>
+    );
 }
