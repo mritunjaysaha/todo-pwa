@@ -9,7 +9,6 @@ import "date-fns/locale";
 export default function AddTodo() {
     const [date, setDate] = useState(new Date());
     const [items, setItems] = useState([]);
-    const [completedItems, setCompletedItems] = useState([]);
     const [currentItem, setCurrentItem] = useState({
         text: "",
         key: "",
@@ -25,7 +24,9 @@ export default function AddTodo() {
     useEffect(() => {
         get("todo").then((val) => {
             console.log(val);
-            setItems(val);
+            if (val != null) {
+                setItems(val);
+            }
         });
     }, []);
 
@@ -47,9 +48,9 @@ export default function AddTodo() {
             text: currentItem.text ? currentItem.text : "",
             key: currentItem.key ? currentItem.key : "",
             deadline: date,
-            active: "",
-            completed: "",
-            missed: "",
+            active: active,
+            completed: completed,
+            missed: missed,
         });
     }
 
@@ -62,18 +63,18 @@ export default function AddTodo() {
             completed: completed,
             missed: missed,
         });
+        const currentDate = new Date();
+        setDate(new Date());
+        if (currentDate > date) {
+            alert("Select a valid date");
+            return;
+        }
         const newItem = currentItem;
         if (newItem.text !== "") {
             const data = [...items, newItem];
             setItems(data);
 
-            const currentDate = new Date();
-            setDate(new Date());
             set("todo", data);
-            if (currentDate > date) {
-                alert("Select a valid date");
-                return;
-            }
         }
     }
 
@@ -84,17 +85,11 @@ export default function AddTodo() {
     }
 
     function completeTodo(key) {
-        console.log("key", key);
-        const completed = [];
-        const filtereditems = items.filter((val) => {
-            if (val.key === key) {
-                val.completed = true;
-                console.log("val", val);
-                completed.push(val);
-            }
-        });
-
-        setItems(filtereditems);
+        items.map((item) =>
+            item.key === key
+                ? (item.completed = true)
+                : (item.completed = false)
+        );
         set("todo", items);
     }
     return (
