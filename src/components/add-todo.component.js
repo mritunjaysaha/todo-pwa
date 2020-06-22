@@ -1,14 +1,15 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Popup from "reactjs-popup";
 import TodoList from "./list-item.component";
 import DateFnsUtils from "@date-io/date-fns";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { set, get } from "idb-keyval";
-import { da } from "date-fns/locale";
+import "date-fns/locale";
 
 export default function AddTodo() {
     const [date, setDate] = useState(new Date());
     const [items, setItems] = useState([]);
+    const [completedItems, setCompletedItems] = useState([]);
     const [currentItem, setCurrentItem] = useState({
         text: "",
         key: "",
@@ -20,6 +21,13 @@ export default function AddTodo() {
     const [active, setActive] = useState(true);
     const [missed, setMissed] = useState(false);
     const [completed, setCompleted] = useState(false);
+
+    useEffect(() => {
+        get("todo").then((val) => {
+            console.log(val);
+            setItems(val);
+        });
+    }, []);
 
     function handleInput(e) {
         e.preventDefault();
@@ -35,6 +43,14 @@ export default function AddTodo() {
 
     function handleDate(date) {
         setDate(date);
+        setCurrentItem({
+            text: currentItem.text ? currentItem.text : "",
+            key: currentItem.key ? currentItem.key : "",
+            deadline: date,
+            active: "",
+            completed: "",
+            missed: "",
+        });
     }
 
     function addTask() {
@@ -52,7 +68,8 @@ export default function AddTodo() {
             setItems(data);
 
             const currentDate = new Date();
-
+            setDate(new Date());
+            set("todo", data);
             if (currentDate > date) {
                 alert("Select a valid date");
                 return;
@@ -63,6 +80,22 @@ export default function AddTodo() {
     function deleteTodo(key) {
         const filteredItems = items.filter((item) => item.key !== key);
         setItems(filteredItems);
+        set("todo", filteredItems);
+    }
+
+    function completeTodo(key) {
+        console.log("key", key);
+        const completed = [];
+        const filtereditems = items.filter((val) => {
+            if (val.key === key) {
+                val.completed = true;
+                console.log("val", val);
+                completed.push(val);
+            }
+        });
+
+        setItems(filtereditems);
+        set("todo", items);
     }
     return (
         <>
@@ -86,7 +119,11 @@ export default function AddTodo() {
             </Popup>
 
             {items.length > 0 ? (
-                <TodoList list={items} deleteItem={deleteTodo} />
+                <TodoList
+                    list={items}
+                    deleteItem={deleteTodo}
+                    completeTodo={completeTodo}
+                />
             ) : (
                 <p>Add Todo</p>
             )}
