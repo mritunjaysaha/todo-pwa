@@ -95,16 +95,27 @@ export default function CenteredTabs() {
     }
 
     function completeTodo(key) {
-        items.map((item) =>
-            item.key === key
-                ? (item.completed = true)
-                : (item.completed = false)
-        );
+        items.map((item) => {
+            if (item.key === key) {
+                item.completed = true;
+                item.active = false;
+            }
+        });
+        set("todo", items);
+    }
+    function missedTodo(key) {
+        items.map((item) => {
+            if (item.key === key) {
+                item.completed = false;
+                item.active = false;
+                item.missed = true;
+            }
+        });
         set("todo", items);
     }
 
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -118,6 +129,8 @@ export default function CenteredTabs() {
                         list={items}
                         deleteItem={deleteTodo}
                         completeTodo={completeTodo}
+                        missedTodo={missedTodo}
+                        listFor={"active"}
                     />
                 ) : (
                     <p>Add Todo</p>
@@ -129,14 +142,34 @@ export default function CenteredTabs() {
     function CompletedList(theme) {
         return (
             <Paper>
-                <div>Completed</div>
+                <h3>Completed</h3>
+                {items.length > 0 ? (
+                    <TodoList
+                        list={items}
+                        deleteItem={deleteTodo}
+                        completeTodo={completeTodo}
+                        listFor={"completed"}
+                    />
+                ) : (
+                    <p>Yet to complete a todo</p>
+                )}
             </Paper>
         );
     }
     function MissedList(theme) {
         return (
             <Paper>
-                <div>Missed</div>
+                <h3>Missed</h3>
+                {items.length > 0 ? (
+                    <TodoList
+                        list={items}
+                        deleteItem={deleteTodo}
+                        completeTodo={completeTodo}
+                        listFor={"missed"}
+                    />
+                ) : (
+                    <p>No Todo's missed</p>
+                )}
             </Paper>
         );
     }
