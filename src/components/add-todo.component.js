@@ -112,16 +112,6 @@ export default function AddTodo() {
                     </>
                 )}
             </Popup>
-
-            {items.length > 0 ? (
-                <TodoList
-                    list={items}
-                    deleteItem={deleteTodo}
-                    completeTodo={completeTodo}
-                />
-            ) : (
-                <p>Add Todo</p>
-            )}
         </>
     );
 }
