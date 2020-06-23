@@ -27,9 +27,9 @@ export default function CenteredTabs() {
         completed: "",
         missed: "",
     });
-    const [active, setActive] = useState(true);
-    const [missed, setMissed] = useState(false);
-    const [completed, setCompleted] = useState(false);
+    const active = true;
+    const missed = false;
+    const completed = false;
 
     useEffect(() => {
         get("todo").then((val) => {

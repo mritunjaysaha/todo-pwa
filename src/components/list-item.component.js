@@ -25,14 +25,24 @@ export default function TodoList(props) {
                             <button onClick={() => props.deleteItem(todo.key)}>
                                 DEL
                             </button>
-                            <button
-                                onClick={() => props.completeTodo(todo.key)}
-                            >
-                                Completed
-                            </button>
-                            <button onClick={() => props.missedTodo(todo.key)}>
-                                Missed
-                            </button>
+                            {props.listFor === "active" ? (
+                                <>
+                                    <button
+                                        onClick={() =>
+                                            props.completeTodo(todo.key)
+                                        }
+                                    >
+                                        Completed
+                                    </button>
+                                    <button
+                                        onClick={() =>
+                                            props.missedTodo(todo.key)
+                                        }
+                                    >
+                                        Missed
+                                    </button>
+                                </>
+                            ) : null}
                         </span>
                     </p>
                 ) : null}
