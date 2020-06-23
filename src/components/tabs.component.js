@@ -95,23 +95,26 @@ export default function CenteredTabs() {
     }
 
     function completeTodo(key) {
-        items.map((item) => {
+        const list = items.map((item) => {
             if (item.key === key) {
                 item.completed = true;
                 item.active = false;
             }
+            return item;
         });
-        set("todo", items);
+
+        set("todo", list);
     }
     function missedTodo(key) {
-        items.map((item) => {
+        const list = items.map((item) => {
             if (item.key === key) {
                 item.completed = false;
                 item.active = false;
                 item.missed = true;
             }
+            return item;
         });
-        set("todo", items);
+        set("todo", list);
     }
 
     const classes = useStyles();
@@ -144,12 +147,7 @@ export default function CenteredTabs() {
             <Paper>
                 <h3>Completed</h3>
                 {items.length > 0 ? (
-                    <TodoList
-                        list={items}
-                        deleteItem={deleteTodo}
-                        completeTodo={completeTodo}
-                        listFor={"completed"}
-                    />
+                    <TodoList list={items} listFor={"completed"} />
                 ) : (
                     <p>Yet to complete a todo</p>
                 )}
@@ -161,12 +159,7 @@ export default function CenteredTabs() {
             <Paper>
                 <h3>Missed</h3>
                 {items.length > 0 ? (
-                    <TodoList
-                        list={items}
-                        deleteItem={deleteTodo}
-                        completeTodo={completeTodo}
-                        listFor={"missed"}
-                    />
+                    <TodoList list={items} listFor={"missed"} />
                 ) : (
                     <p>No Todo's missed</p>
                 )}
