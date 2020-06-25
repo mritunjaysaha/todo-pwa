@@ -21,7 +21,7 @@ export default function TodoList(props) {
                         Task: {todo.text}
                         <span>
                             <p>Deadline: {todo.deadline.toLocaleString()}</p>
-                            <Counter date={todo.deadline} />
+                            <Counter date={todo.deadline} status={listFor} />
                             <button onClick={() => props.deleteItem(todo.key)}>
                                 DEL
                             </button>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 export default function Counter(props) {
     const date = props.date;
-
+    const status = props.status;
     function getReamainingTime(endtime) {
         // converts the string to millisecond
         const total = Date.parse(endtime) - Date.parse(new Date());
@@ -22,9 +22,11 @@ export default function Counter(props) {
     const [time, setTime] = useState(getReamainingTime(date));
 
     useEffect(() => {
-        setTimeout(() => {
-            setTime(getReamainingTime(date));
-        }, 1000);
+        if (status === "active") {
+            setTimeout(() => {
+                setTime(getReamainingTime(date));
+            }, 1000);
+        }
     });
 
     return (
