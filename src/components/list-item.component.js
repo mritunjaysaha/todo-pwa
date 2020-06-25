@@ -39,13 +39,6 @@ export default function TodoList(props) {
                                     >
                                         Completed
                                     </button>
-                                    <button
-                                        onClick={() =>
-                                            props.missedTodo(todo.key)
-                                        }
-                                    >
-                                        Missed
-                                    </button>
                                 </>
                             ) : null}
                         </span>

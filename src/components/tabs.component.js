@@ -105,17 +105,6 @@ export default function CenteredTabs() {
 
         set("todo", list);
     }
-    function missedTodo(key) {
-        const list = items.map((item) => {
-            if (item.key === key) {
-                item.completed = false;
-                item.active = false;
-                item.missed = true;
-            }
-            return item;
-        });
-        set("todo", list);
-    }
 
     const classes = useStyles();
     const [value, setValue] = useState(0);
@@ -132,7 +121,6 @@ export default function CenteredTabs() {
                         list={items}
                         deleteItem={deleteTodo}
                         completeTodo={completeTodo}
-                        missedTodo={missedTodo}
                         listFor={"active"}
                     />
                 ) : (
