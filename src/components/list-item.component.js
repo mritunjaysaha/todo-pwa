@@ -28,18 +28,17 @@ export default function TodoList(props) {
                                 items={todo}
                                 fullList={todos}
                             />
-                            <button onClick={() => props.deleteItem(todo.key)}>
-                                <DeleteOutlineOutlinedIcon />
-                            </button>
+                            <DeleteOutlineOutlinedIcon
+                                onClick={() => props.deleteItem(todo.key)}
+                            />
+
                             {props.listFor === "active" ? (
                                 <>
-                                    <button
+                                    <CheckCircleOutlineOutlinedIcon
                                         onClick={() =>
                                             props.completeTodo(todo.key)
                                         }
-                                    >
-                                        <CheckCircleOutlineOutlinedIcon />
-                                    </button>
+                                    />
                                 </>
                             ) : null}
                         </span>
