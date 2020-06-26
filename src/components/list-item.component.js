@@ -1,6 +1,7 @@
 import React from "react";
 import Counter from "./counter.component";
-
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
+import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 export default function TodoList(props) {
     const todos = props.list;
     const listFor = props.listFor;
@@ -28,7 +29,7 @@ export default function TodoList(props) {
                                 fullList={todos}
                             />
                             <button onClick={() => props.deleteItem(todo.key)}>
-                                DEL
+                                <DeleteOutlineOutlinedIcon />
                             </button>
                             {props.listFor === "active" ? (
                                 <>
@@ -37,7 +38,7 @@ export default function TodoList(props) {
                                             props.completeTodo(todo.key)
                                         }
                                     >
-                                        Completed
+                                        <CheckCircleOutlineOutlinedIcon />
                                     </button>
                                 </>
                             ) : null}
