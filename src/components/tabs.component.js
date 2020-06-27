@@ -9,7 +9,12 @@ import { set, get } from "idb-keyval";
 import Popup from "reactjs-popup";
 import DateFnsUtils from "@date-io/date-fns";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-
+import AddIcon from "@material-ui/icons/Add";
+import "../styles/main.css";
+import RestoreIcon from "@material-ui/icons/Restore";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+// import LabelBottomNavigation from "./bottom-navigation.component";
 const useStyles = makeStyles({
     root: {
         flexGrow: 1,
@@ -164,7 +169,7 @@ export default function CenteredTabs() {
     }
     return (
         <>
-            <Popup trigger={<button>CREATE TODO</button>} modal>
+            <Popup trigger={<AddIcon className="createTodoButton" />} modal>
                 {(close) => (
                     <>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -207,6 +212,28 @@ export default function CenteredTabs() {
                     <Route path="/missed" component={MissedList} />
                 </Switch>
             </BrowserRouter>
+            {/* <LabelBottomNavigation /> */}
+            <BottomNavigation
+                value={value}
+                onChange={handleChange}
+                className="bottom-navigation-bar"
+            >
+                <BottomNavigationAction
+                    label="Active"
+                    value="active"
+                    icon={<RestoreIcon />}
+                />
+                <BottomNavigationAction
+                    label="Completed"
+                    value="completed"
+                    icon={<RestoreIcon />}
+                />
+                <BottomNavigationAction
+                    label="Missed"
+                    value="missed"
+                    icon={<RestoreIcon />}
+                />
+            </BottomNavigation>
         </>
     );
 }

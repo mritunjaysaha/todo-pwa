@@ -1,0 +1,17 @@
+/* line 25, main.scss */
+.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
+  background-color: #ff0;
+  color: #f00; }
+
+/* line 30, main.scss */
+.PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3 {
+  background-color: #f00; }
+
+/* line 40, main.scss */
+.MuiBottomNavigation-root.bottom-navigation-bar {
+  position: absolute;
+  background-color: #ff0;
+  width: 100%;
+  top: calc(100vh - 3.5em); }
+
+/*# sourceMappingURL=main.css.map */

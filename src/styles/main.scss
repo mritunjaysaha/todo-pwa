@@ -1,0 +1,49 @@
+// .createTodoButton {
+//     // background-color: #b3e5fc;
+//     background-color: #9be4f5;
+//     // color: #ffa79a;
+//     color: #000;
+//     border-radius: 50%;
+//     padding: 0.3em;
+//     position: fixed;
+//     z-index: 10;
+//     top: calc(100vh - 50px);
+//     margin-right: 0.2em;
+//     margin-bottom: 0.2em;
+//     right: 0.2em;
+//     box-shadow: 2px 2.5px 5px rgba(0, 0, 1, 0.5);
+
+//     &:hover {
+//         background-color: #f00;
+//         padding: 0.5em;
+//         transition: ease 2s, background-color 1s, transform 1s;
+//     }
+// }
+
+// TABS SECTION
+
+.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
+    background-color: #ff0;
+    color: #f00;
+}
+
+.PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3 {
+    background-color: #f00;
+}
+
+// MuiTabs-flexContainer MuiTabs-centered
+// .MuiTabs-flexContainer {
+//     // border: 1px solid #f00;
+// }
+
+//Bottom navigation bar
+.MuiBottomNavigation-root.bottom-navigation-bar {
+    position: absolute;
+    background-color: #ff0;
+    width: 100%;
+    top: calc(100vh - 3.5em);
+}
+// .bottom-navigation-bar {
+//     position: absolute;
+//     // top: ;
+// }
