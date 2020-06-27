@@ -135,7 +135,11 @@ export default function CenteredTabs() {
             <Paper>
                 <h3>Completed</h3>
                 {items.length > 0 ? (
-                    <TodoList list={items} listFor={"completed"} />
+                    <TodoList
+                        list={items}
+                        listFor={"completed"}
+                        deleteItem={deleteTodo}
+                    />
                 ) : (
                     <p>Yet to complete a todo</p>
                 )}
@@ -147,7 +151,11 @@ export default function CenteredTabs() {
             <Paper>
                 <h3>Missed</h3>
                 {items.length > 0 ? (
-                    <TodoList list={items} listFor={"missed"} />
+                    <TodoList
+                        list={items}
+                        listFor={"missed"}
+                        deleteItem={deleteTodo}
+                    />
                 ) : (
                     <p>No Todo's missed</p>
                 )}

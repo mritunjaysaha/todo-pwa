@@ -30,6 +30,7 @@ export default function TodoList(props) {
                             />
                             <DeleteOutlineOutlinedIcon
                                 onClick={() => props.deleteItem(todo.key)}
+                                fontSize="large"
                             />
 
                             {props.listFor === "active" ? (
@@ -38,6 +39,7 @@ export default function TodoList(props) {
                                         onClick={() =>
                                             props.completeTodo(todo.key)
                                         }
+                                        fontSize="large"
                                     />
                                 </>
                             ) : null}
