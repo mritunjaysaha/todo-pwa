@@ -16,7 +16,6 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 import HomeIcon from "@material-ui/icons/Home";
 import BlockOutlinedIcon from "@material-ui/icons/BlockOutlined";
-
 const contentStyle = {
     background: "#f00",
     height: "50%",
@@ -46,8 +45,9 @@ export default function CenteredTabs() {
     const active = true;
     const missed = false;
     const completed = false;
-    const pathMap = ["/active", "/completed", "/missed"];
-    const [currentTab, setCurrentTab] = useState("active");
+    const pathMap = ["/", "/completed", "/missed"];
+    const [currentMobileTab, setCurrentMobileTab] = useState(pathMap[0]);
+    const [currentDesktopTab, setcurrentDesktopTab] = useState(0);
     useEffect(() => {
         get("todo").then((val) => {
             console.log(val);
@@ -81,21 +81,9 @@ export default function CenteredTabs() {
         });
     }
     const handleMobileTabs = (event, currenTab) => {
-        setCurrentTab(currenTab);
+        setCurrentMobileTab(currenTab);
     };
 
-    // const classes = useStyles();
-    // const [value, setValue] = useState(0);
-
-    // const handleDesktopTabs = (event, newValue) => {
-    //     setValue(newValue);
-    // };
-    const classes = useStyles();
-    const [value, setValue] = useState(0);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
     function addTask() {
         setCurrentItem({
             text: currentItem.text,
@@ -137,7 +125,23 @@ export default function CenteredTabs() {
 
         set("todo", list);
     }
+    function missedTodo(key) {
+        const list = items.map((item) => {
+            if (item.key === key) {
+                item.completed = false;
+                item.active = false;
+                item.missed = true;
+            }
+            return item;
+        });
+        set("todo", list);
+    }
 
+    const classes = useStyles();
+
+    const handleDesktopTabs = (event, newValue) => {
+        setcurrentDesktopTab(newValue);
+    };
     function ActiveList(theme) {
         return (
             <Paper>
@@ -147,6 +151,7 @@ export default function CenteredTabs() {
                         list={items}
                         deleteItem={deleteTodo}
                         completeTodo={completeTodo}
+                        missedTodo={missedTodo}
                         listFor={"active"}
                     />
                 ) : (
@@ -161,11 +166,7 @@ export default function CenteredTabs() {
             <Paper>
                 <h3>Completed</h3>
                 {items.length > 0 ? (
-                    <TodoList
-                        list={items}
-                        listFor={"completed"}
-                        deleteItem={deleteTodo}
-                    />
+                    <TodoList list={items} listFor={"completed"} />
                 ) : (
                     <p>Yet to complete a todo</p>
                 )}
@@ -177,11 +178,7 @@ export default function CenteredTabs() {
             <Paper>
                 <h3>Missed</h3>
                 {items.length > 0 ? (
-                    <TodoList
-                        list={items}
-                        listFor={"missed"}
-                        deleteItem={deleteTodo}
-                    />
+                    <TodoList list={items} listFor={"missed"} />
                 ) : (
                     <p>No Todo's missed</p>
                 )}
@@ -216,34 +213,33 @@ export default function CenteredTabs() {
             <BrowserRouter>
                 <Paper className={classes.root}>
                     <Tabs
-                        value={value}
-                        onChange={handleChange}
+                        value={currentDesktopTab}
+                        onChange={handleDesktopTabs}
                         indicatorColor="primary"
                         textColor="primary"
                         centered
                     >
-                        <Tab label="Active" component={Link} to="/" />
+                        <Tab label="Active" component={Link} to={pathMap[0]} />
                         <Tab
                             label="Completed"
                             component={Link}
-                            to="/completed"
+                            to={pathMap[1]}
                         />
-                        <Tab label="Missed" component={Link} to="/missed" />
+                        <Tab label="Missed" component={Link} to={pathMap[2]} />
                     </Tabs>
                 </Paper>
 
                 <Switch>
-                    <Route exact path="/" component={ActiveList} />
-                    <Route path="/completed" component={CompletedList} />
-                    <Route path="/missed" component={MissedList} />
+                    <Route exact path={pathMap[0]} component={ActiveList} />
+                    <Route path={pathMap[1]} component={CompletedList} />
+                    <Route path={pathMap[2]} component={MissedList} />
                 </Switch>
             </BrowserRouter>
-
             <BrowserRouter>
                 <BottomNavigation
-                    value={currentTab}
+                    value={currentMobileTab}
                     onChange={handleMobileTabs}
-                    className="bottom-navigation-bar mobile"
+                    className="bottom-navigation-bar"
                 >
                     <BottomNavigationAction
                         label="Active"
