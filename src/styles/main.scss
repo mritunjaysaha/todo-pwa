@@ -7,12 +7,22 @@
 // TABS SECTION
 
 /*********Desktop TABS************/
-.MuiTabs-flexContainer.MuiTabs-centered {
-    // background: #f00;
+.MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.1);
 }
+.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
+    box-shadow: none;
+    text-align: center;
+    align-items: center;
+}
+
 .MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
-    // background-color: #ff0;
     color: #161c84;
+}
+.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
+    // box-shadow: none;
+    box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3 {
@@ -63,5 +73,8 @@
     }
     .MuiButtonBase-root.MuiBottomNavigationAction-root.Mui-selected {
         color: #fff;
+    }
+    .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
+        box-shadow: none;
     }
 }
