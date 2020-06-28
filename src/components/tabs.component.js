@@ -50,6 +50,7 @@ export default function CenteredTabs() {
     const [currentDesktopTab, setcurrentDesktopTab] = useState(0);
     useEffect(() => {
         get("todo").then((val) => {
+            console.log(val);
             if (val != null) {
                 setItems(val);
             }
@@ -124,17 +125,6 @@ export default function CenteredTabs() {
 
         set("todo", list);
     }
-    function missedTodo(key) {
-        const list = items.map((item) => {
-            if (item.key === key) {
-                item.completed = false;
-                item.active = false;
-                item.missed = true;
-            }
-            return item;
-        });
-        set("todo", list);
-    }
 
     const classes = useStyles();
 
@@ -143,43 +133,21 @@ export default function CenteredTabs() {
     };
     function ActiveList(theme) {
         return (
-            <Paper>
-                <Popup
-                    trigger={<AddIcon className="createTodoButton" />}
-                    modal
-                    overlayStyle={overlayStyle}
-                    contentStyle={contentStyle}
-                >
-                    {(close) => (
-                        <>
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <DateTimePicker
-                                    value={date}
-                                    onChange={handleDate}
-                                />
-                            </MuiPickersUtilsProvider>
-                            <input type="text" onChange={handleInput} />
-
-                            <button onClick={addTask}>Add</button>
-                            <button className="close" onClick={close}>
-                                &times;
-                            </button>
-                        </>
+            <>
+                <Paper>
+                    {items.length > 0 ? (
+                        <TodoList
+                            className="cards-container"
+                            list={items}
+                            deleteItem={deleteTodo}
+                            completeTodo={completeTodo}
+                            listFor={"active"}
+                        />
+                    ) : (
+                        <p>Add Todo</p>
                     )}
-                </Popup>
-                {items.length > 0 ? (
-                    <TodoList
-                        className="cards-container"
-                        list={items}
-                        deleteItem={deleteTodo}
-                        completeTodo={completeTodo}
-                        missedTodo={missedTodo}
-                        listFor={"active"}
-                    />
-                ) : (
-                    <p>Add Todo</p>
-                )}
-            </Paper>
+                </Paper>
+            </>
         );
     }
 
@@ -217,6 +185,29 @@ export default function CenteredTabs() {
     }
     return (
         <>
+            <Popup
+                trigger={<AddIcon className="createTodoButton" />}
+                modal
+                overlayStyle={overlayStyle}
+                contentStyle={contentStyle}
+            >
+                {(close) => (
+                    <>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <DateTimePicker
+                                value={date}
+                                onChange={handleDate}
+                            />
+                        </MuiPickersUtilsProvider>
+                        <input type="text" onChange={handleInput} />
+
+                        <button onClick={addTask}>Add</button>
+                        <button className="close" onClick={close}>
+                            &times;
+                        </button>
+                    </>
+                )}
+            </Popup>
             <BrowserRouter>
                 <Paper className={classes.root}>
                     <Tabs
