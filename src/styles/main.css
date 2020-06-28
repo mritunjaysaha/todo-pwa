@@ -1,17 +1,59 @@
-/* line 25, main.scss */
+/* line 1, main.scss */
+.createTodoButton {
+  background-color: #9be4f5;
+  color: #000;
+  border-radius: 50%;
+  padding: 0.3em;
+  position: fixed;
+  top: calc(100vh - 85px);
+  margin-right: 43.5%;
+  right: 0.2em;
+  box-shadow: 2px 2.5px 5px rgba(0, 0, 1, 0.5);
+  z-index: 1000; }
+
+/* line 26, main.scss */
+.popup-overlay.popup-content:content {
+  background: #f00; }
+
+/* line 32, main.scss */
 .MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
   background-color: #ff0;
   color: #f00; }
 
-/* line 30, main.scss */
+/* line 37, main.scss */
 .PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3 {
   background-color: #f00; }
 
-/* line 40, main.scss */
+/* line 42, main.scss */
+.MuiTabs-flexContainer {
+  border: 1px solid #f00; }
+
+/* line 47, main.scss */
 .MuiBottomNavigation-root.bottom-navigation-bar {
   position: absolute;
-  background-color: #ff0;
+  background-color: #161c84;
+  color: #fff;
   width: 100%;
-  top: calc(100vh - 3.5em); }
+  top: calc(100vh - 3.5em);
+  z-index: 100; }
+
+/* line 61, main.scss */
+.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
+  position: absolute;
+  top: -82vh;
+  height: 82vh;
+  overflow-y: scroll;
+  width: 100%;
+  z-index: 20;
+  text-align: center; }
+
+/* line 72, main.scss */
+.MuiButtonBase-root.MuiBottomNavigationAction-root.Mui-selected {
+  color: #fff; }
+
+@media screen and (min-width: 760px) {
+  /* line 77, main.scss */
+  .MuiBottomNavigation-root.bottom-navigation-bar {
+    display: none; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import { makeStyles } from "@material-ui/core/styles";
 import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
 import TodoList from "./list-item.component";
 import { set, get } from "idb-keyval";
@@ -11,10 +11,21 @@ import DateFnsUtils from "@date-io/date-fns";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import AddIcon from "@material-ui/icons/Add";
 import "../styles/main.css";
-import RestoreIcon from "@material-ui/icons/Restore";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-// import LabelBottomNavigation from "./bottom-navigation.component";
+import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
+import HomeIcon from "@material-ui/icons/Home";
+import BlockOutlinedIcon from "@material-ui/icons/BlockOutlined";
+
+const contentStyle = {
+    background: "#f00",
+    height: "50%",
+};
+
+const overlayStyle = {
+    background: "rgba(0,0,0,0.4)",
+};
+
 const useStyles = makeStyles({
     root: {
         flexGrow: 1,
@@ -35,7 +46,8 @@ export default function CenteredTabs() {
     const active = true;
     const missed = false;
     const completed = false;
-
+    const pathMap = ["/active", "/completed", "/missed"];
+    const [currentTab, setCurrentTab] = useState("active");
     useEffect(() => {
         get("todo").then((val) => {
             console.log(val);
@@ -68,7 +80,22 @@ export default function CenteredTabs() {
             missed: missed,
         });
     }
+    const handleMobileTabs = (event, currenTab) => {
+        setCurrentTab(currenTab);
+    };
 
+    // const classes = useStyles();
+    // const [value, setValue] = useState(0);
+
+    // const handleDesktopTabs = (event, newValue) => {
+    //     setValue(newValue);
+    // };
+    const classes = useStyles();
+    const [value, setValue] = useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
     function addTask() {
         setCurrentItem({
             text: currentItem.text,
@@ -111,12 +138,6 @@ export default function CenteredTabs() {
         set("todo", list);
     }
 
-    const classes = useStyles();
-    const [value, setValue] = useState(0);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
     function ActiveList(theme) {
         return (
             <Paper>
@@ -169,7 +190,12 @@ export default function CenteredTabs() {
     }
     return (
         <>
-            <Popup trigger={<AddIcon className="createTodoButton" />} modal>
+            <Popup
+                trigger={<AddIcon className="createTodoButton" />}
+                modal
+                overlayStyle={overlayStyle}
+                contentStyle={contentStyle}
+            >
                 {(close) => (
                     <>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -212,28 +238,42 @@ export default function CenteredTabs() {
                     <Route path="/missed" component={MissedList} />
                 </Switch>
             </BrowserRouter>
-            {/* <LabelBottomNavigation /> */}
-            <BottomNavigation
-                value={value}
-                onChange={handleChange}
-                className="bottom-navigation-bar"
-            >
-                <BottomNavigationAction
-                    label="Active"
-                    value="active"
-                    icon={<RestoreIcon />}
-                />
-                <BottomNavigationAction
-                    label="Completed"
-                    value="completed"
-                    icon={<RestoreIcon />}
-                />
-                <BottomNavigationAction
-                    label="Missed"
-                    value="missed"
-                    icon={<RestoreIcon />}
-                />
-            </BottomNavigation>
+
+            <BrowserRouter>
+                <BottomNavigation
+                    value={currentTab}
+                    onChange={handleMobileTabs}
+                    className="bottom-navigation-bar mobile"
+                >
+                    <BottomNavigationAction
+                        label="Active"
+                        value="active"
+                        icon={<HomeIcon />}
+                        component={Link}
+                        to={pathMap[0]}
+                    />
+                    <BottomNavigationAction
+                        label="Completed"
+                        value="completed"
+                        icon={<CheckCircleOutlineOutlinedIcon />}
+                        component={Link}
+                        to={pathMap[1]}
+                    />
+                    <BottomNavigationAction
+                        label="Missed"
+                        value="missed"
+                        icon={<BlockOutlinedIcon />}
+                        component={Link}
+                        to={pathMap[2]}
+                    />
+
+                    <Switch>
+                        <Route exact path={pathMap[0]} component={ActiveList} />
+                        <Route path={pathMap[1]} component={CompletedList} />
+                        <Route path={pathMap[2]} component={MissedList} />
+                    </Switch>
+                </BottomNavigation>
+            </BrowserRouter>
         </>
     );
 }
