@@ -59,7 +59,8 @@ export default function Counter(props) {
     return (
         <>
             <p>
-                {time.days}:{time.hours}:{time.minutes}:{time.seconds}
+                Time Left: {time.days}:{time.hours}:{time.minutes}:
+                {time.seconds}
             </p>
         </>
     );
