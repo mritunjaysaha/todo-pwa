@@ -10,8 +10,6 @@ body {
         background: #f00;
     }
 }
-// TABS SECTION
-
 /*********Desktop TABS************/
 // .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded
 .MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
@@ -42,7 +40,8 @@ body {
 /**************TODO's*****************/
 
 .cards {
-    border: 1px solid #f00;
+    border: 4px solid #000;
+    border-radius: 50px;
     width: 20%;
     float: left;
     &::before,
@@ -50,20 +49,28 @@ body {
         clear: both;
     }
 
-    margin: 4% 0 2% 4%;
+    margin: 2% 0 0 4%;
 }
 .cards-button {
     background: none;
     border: none;
     width: 100%;
+
+    &:focus {
+        outline: none;
+    }
 }
 .cards-button-container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+}
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeLarge {
+    cursor: pointer;
 }
 
+// TODO button
+.createTodoButton {
+    cursor: pointer;
+}
 @media screen and (max-width: 760px) {
     //Enable Bottom navigation bar Ṃobile
     .MuiBottomNavigation-root.bottom-navigation-bar {
@@ -116,5 +123,6 @@ body {
     .cards {
         float: none;
         width: 92%;
+        margin: 4%;
     }
 }

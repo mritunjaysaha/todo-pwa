@@ -14,7 +14,7 @@ export default function TodoList(props) {
         } else {
             condition = todo.missed === true;
         }
-        console.log(todo);
+
         return (
             <>
                 {condition ? (

@@ -50,7 +50,6 @@ export default function CenteredTabs() {
     const [currentDesktopTab, setcurrentDesktopTab] = useState(0);
     useEffect(() => {
         get("todo").then((val) => {
-            console.log(val);
             if (val != null) {
                 setItems(val);
             }
@@ -192,6 +191,7 @@ export default function CenteredTabs() {
                         className="cards-container"
                         list={items}
                         listFor={"completed"}
+                        deleteItem={deleteTodo}
                     />
                 ) : (
                     <p>Yet to complete a todo</p>
@@ -207,6 +207,7 @@ export default function CenteredTabs() {
                         className="cards-container"
                         list={items}
                         listFor={"missed"}
+                        deleteItem={deleteTodo}
                     />
                 ) : (
                     <p>No Todo's missed</p>
