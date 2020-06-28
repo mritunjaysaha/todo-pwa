@@ -16,37 +16,41 @@ export default function TodoList(props) {
         }
         console.log(todo);
         return (
-            <div className="cards">
+            <>
                 {condition ? (
-                    <p>
-                        Task: {todo.text}
-                        <span>
-                            <p>Deadline: {todo.deadline.toLocaleString()}</p>
-                            <Counter
-                                date={todo.deadline}
-                                status={listFor}
-                                items={todo}
-                                fullList={todos}
-                            />
-                            <DeleteOutlineOutlinedIcon
-                                onClick={() => props.deleteItem(todo.key)}
-                                fontSize="large"
-                            />
+                    <div className="cards">
+                        <p>
+                            Task: {todo.text}
+                            <span>
+                                <p>
+                                    Deadline: {todo.deadline.toLocaleString()}
+                                </p>
+                                <Counter
+                                    date={todo.deadline}
+                                    status={listFor}
+                                    items={todo}
+                                    fullList={todos}
+                                />
+                                <DeleteOutlineOutlinedIcon
+                                    onClick={() => props.deleteItem(todo.key)}
+                                    fontSize="large"
+                                />
 
-                            {props.listFor === "active" ? (
-                                <>
-                                    <CheckCircleOutlineOutlinedIcon
-                                        onClick={() =>
-                                            props.completeTodo(todo.key)
-                                        }
-                                        fontSize="large"
-                                    />
-                                </>
-                            ) : null}
-                        </span>
-                    </p>
+                                {props.listFor === "active" ? (
+                                    <>
+                                        <CheckCircleOutlineOutlinedIcon
+                                            onClick={() =>
+                                                props.completeTodo(todo.key)
+                                            }
+                                            fontSize="large"
+                                        />
+                                    </>
+                                ) : null}
+                            </span>
+                        </p>
+                    </div>
                 ) : null}
-            </div>
+            </>
         );
     });
 

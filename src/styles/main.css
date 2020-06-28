@@ -49,18 +49,18 @@
 
   /* line 56, main.scss */
   .createTodoButton {
-    background-color: #9be4f5;
-    color: #000;
+    background-color: #161c84;
+    color: #fff;
     border-radius: 50%;
     padding: 0.3em;
     position: fixed;
-    top: calc(100vh - 85px);
-    margin-right: 43.5%;
+    top: calc(100vh - 110px);
     right: 0.2em;
+    border: 2px solid rgba(255, 255, 255, 0.25);
     box-shadow: 2px 2.5px 5px rgba(0, 0, 1, 0.5);
     z-index: 1000; }
 
-  /* line 71, main.scss */
+  /* line 72, main.scss */
   .MuiBottomNavigation-root.bottom-navigation-bar {
     position: absolute;
     background-color: #161c84;
@@ -69,7 +69,7 @@
     top: calc(100vh - 3.5em);
     z-index: 100; }
 
-  /* line 79, main.scss */
+  /* line 80, main.scss */
   .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     position: absolute;
     top: -82vh;
@@ -79,15 +79,15 @@
     z-index: 20;
     text-align: center; }
 
-  /* line 88, main.scss */
+  /* line 89, main.scss */
   .MuiButtonBase-root.MuiBottomNavigationAction-root.Mui-selected {
     color: #fff; }
 
-  /* line 91, main.scss */
+  /* line 92, main.scss */
   .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     box-shadow: none; }
 
-  /* line 94, main.scss */
+  /* line 95, main.scss */
   .cards {
     float: none;
     width: 92%; } }
