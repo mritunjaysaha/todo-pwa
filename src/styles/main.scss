@@ -31,6 +31,20 @@
 .MuiBottomNavigation-root.bottom-navigation-bar {
     display: none;
 }
+/**************TODO's*****************/
+
+.cards {
+    border: 1px solid #f00;
+    width: 20%;
+    float: left;
+    &::before,
+    &::after {
+        clear: both;
+    }
+    margin-left: 4%;
+    margin-top: 2%;
+}
+
 @media screen and (max-width: 760px) {
     //Enable Bottom navigation bar Ṃobile
     .MuiBottomNavigation-root.bottom-navigation-bar {
@@ -76,5 +90,9 @@
     }
     .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
         box-shadow: none;
+    }
+    .cards {
+        float: none;
+        width: 92%;
     }
 }

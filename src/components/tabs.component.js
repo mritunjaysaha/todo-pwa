@@ -145,9 +145,9 @@ export default function CenteredTabs() {
     function ActiveList(theme) {
         return (
             <Paper>
-                <h3>Active</h3>
                 {items.length > 0 ? (
                     <TodoList
+                        className="cards-container"
                         list={items}
                         deleteItem={deleteTodo}
                         completeTodo={completeTodo}
@@ -164,9 +164,12 @@ export default function CenteredTabs() {
     function CompletedList(theme) {
         return (
             <Paper>
-                <h3>Completed</h3>
                 {items.length > 0 ? (
-                    <TodoList list={items} listFor={"completed"} />
+                    <TodoList
+                        className="cards-container"
+                        list={items}
+                        listFor={"completed"}
+                    />
                 ) : (
                     <p>Yet to complete a todo</p>
                 )}
@@ -176,9 +179,12 @@ export default function CenteredTabs() {
     function MissedList(theme) {
         return (
             <Paper>
-                <h3>Missed</h3>
                 {items.length > 0 ? (
-                    <TodoList list={items} listFor={"missed"} />
+                    <TodoList
+                        className="cards-container"
+                        list={items}
+                        listFor={"missed"}
+                    />
                 ) : (
                     <p>No Todo's missed</p>
                 )}

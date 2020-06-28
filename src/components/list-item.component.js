@@ -16,7 +16,7 @@ export default function TodoList(props) {
         }
         console.log(todo);
         return (
-            <div>
+            <div className="cards">
                 {condition ? (
                     <p>
                         Task: {todo.text}
