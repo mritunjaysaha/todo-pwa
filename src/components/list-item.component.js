@@ -31,21 +31,31 @@ export default function TodoList(props) {
                                     items={todo}
                                     fullList={todos}
                                 />
-                                <DeleteOutlineOutlinedIcon
-                                    onClick={() => props.deleteItem(todo.key)}
-                                    fontSize="large"
-                                />
-
-                                {props.listFor === "active" ? (
-                                    <>
-                                        <CheckCircleOutlineOutlinedIcon
+                                <div className="cards-button-container">
+                                    <button className="cards-button">
+                                        <DeleteOutlineOutlinedIcon
                                             onClick={() =>
-                                                props.completeTodo(todo.key)
+                                                props.deleteItem(todo.key)
                                             }
                                             fontSize="large"
                                         />
-                                    </>
-                                ) : null}
+                                    </button>
+
+                                    {props.listFor === "active" ? (
+                                        <>
+                                            <button className="cards-button">
+                                                <CheckCircleOutlineOutlinedIcon
+                                                    onClick={() =>
+                                                        props.completeTodo(
+                                                            todo.key
+                                                        )
+                                                    }
+                                                    fontSize="large"
+                                                />
+                                            </button>
+                                        </>
+                                    ) : null}
+                                </div>
                             </span>
                         </p>
                     </div>
