@@ -13,12 +13,14 @@ body {
 // TABS SECTION
 
 /*********Desktop TABS************/
+// .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded
 .MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
     box-shadow: none;
     background: rgba(0, 0, 0, 0.1);
 }
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
-    box-shadow: none;
+    background: none;
+    box-shadow: none !important;
     text-align: center;
     align-items: center;
 }
