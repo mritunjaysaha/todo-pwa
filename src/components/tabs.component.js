@@ -145,6 +145,29 @@ export default function CenteredTabs() {
     function ActiveList(theme) {
         return (
             <Paper>
+                <Popup
+                    trigger={<AddIcon className="createTodoButton" />}
+                    modal
+                    overlayStyle={overlayStyle}
+                    contentStyle={contentStyle}
+                >
+                    {(close) => (
+                        <>
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <DateTimePicker
+                                    value={date}
+                                    onChange={handleDate}
+                                />
+                            </MuiPickersUtilsProvider>
+                            <input type="text" onChange={handleInput} />
+
+                            <button onClick={addTask}>Add</button>
+                            <button className="close" onClick={close}>
+                                &times;
+                            </button>
+                        </>
+                    )}
+                </Popup>
                 {items.length > 0 ? (
                     <TodoList
                         className="cards-container"
@@ -193,29 +216,6 @@ export default function CenteredTabs() {
     }
     return (
         <>
-            <Popup
-                trigger={<AddIcon className="createTodoButton" />}
-                modal
-                overlayStyle={overlayStyle}
-                contentStyle={contentStyle}
-            >
-                {(close) => (
-                    <>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <DateTimePicker
-                                value={date}
-                                onChange={handleDate}
-                            />
-                        </MuiPickersUtilsProvider>
-                        <input type="text" onChange={handleInput} />
-
-                        <button onClick={addTask}>Add</button>
-                        <button className="close" onClick={close}>
-                            &times;
-                        </button>
-                    </>
-                )}
-            </Popup>
             <BrowserRouter>
                 <Paper className={classes.root}>
                     <Tabs

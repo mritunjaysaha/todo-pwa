@@ -1,3 +1,9 @@
+body {
+    background-image: url(./hex/19366.jpg);
+
+    background-size: cover;
+    // background-repeat: none;
+}
 //POPUP SECTION
 .popup-overlay.popup-content {
     &:content {
@@ -49,6 +55,7 @@
     //Enable Bottom navigation bar Ṃobile
     .MuiBottomNavigation-root.bottom-navigation-bar {
         display: flex;
+        background: transparent;
     }
     // Disable desktop tabs.
 
@@ -91,6 +98,7 @@
     }
     .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
         box-shadow: none;
+        background: none;
     }
     .cards {
         float: none;
