@@ -46,7 +46,7 @@ export default function CenteredTabs() {
     const missed = false;
     const completed = false;
     const pathMap = ["/", "/completed", "/missed"];
-    const [currentMobileTab, setCurrentMobileTab] = useState(pathMap[0]);
+    const [currentMobileTab, setCurrentMobileTab] = useState(0);
     const [currentDesktopTab, setcurrentDesktopTab] = useState(0);
     useEffect(() => {
         get("todo").then((val) => {
