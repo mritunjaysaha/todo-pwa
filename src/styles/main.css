@@ -3,15 +3,15 @@ body {
   background-image: url(./hex/19366.jpg);
   background-size: cover; }
 
-/* line 9, main.scss */
+/* line 8, main.scss */
 .popup-overlay.popup-content:content {
   background: #f00; }
 
 /*********Desktop TABS************/
-/* line 15, main.scss */
+/* line 14, main.scss */
 .MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
   box-shadow: none;
-  background: rgba(0, 0, 0, 0.1); }
+  background: #8dceee; }
 
 /* line 19, main.scss */
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
@@ -22,62 +22,67 @@ body {
 
 /* line 26, main.scss */
 .MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
-  color: #80c3e6; }
+  color: #fff; }
 
-/* line 29, main.scss */
+/* line 30, main.scss */
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
   box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.75); }
 
-/* line 34, main.scss */
+/* line 35, main.scss */
 .PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3 {
-  background-color: #80c3e6; }
+  background-color: #fff; }
 
-/* line 37, main.scss */
+/* line 39, main.scss */
 .MuiBottomNavigation-root.bottom-navigation-bar {
   display: none; }
 
 /**************TODO's*****************/
-/* line 42, main.scss */
+/* line 44, main.scss */
 .cards {
   border: 4px solid #000;
   border-radius: 50px;
   width: 20%;
   float: left;
   margin: 2% 0 0 4%; }
-  /* line 47, main.scss */
+  /* line 49, main.scss */
   .cards::before, .cards::after {
     clear: both; }
 
-/* line 54, main.scss */
+/* line 56, main.scss */
 .cards-button {
   background: none;
   border: none;
   width: 100%; }
-  /* line 59, main.scss */
+  /* line 61, main.scss */
   .cards-button:focus {
     outline: none; }
 
-/* line 63, main.scss */
+/* line 65, main.scss */
 .cards-button-container {
   display: flex; }
 
-/* line 66, main.scss */
+/* line 68, main.scss */
 .MuiSvgIcon-root.MuiSvgIcon-fontSizeLarge {
   cursor: pointer; }
 
-/* line 71, main.scss */
+/* line 73, main.scss */
 .createTodoButton {
   cursor: pointer; }
 
 @media screen and (max-width: 760px) {
-  /* line 76, main.scss */
+  /* line 77, main.scss */
+  body {
+    background-image: url(./hex/19366-1.jpg);
+    background-size: 100%; }
+
+  /* line 83, main.scss */
   .MuiBottomNavigation-root.bottom-navigation-bar {
     display: flex;
     background: transparent; }
 
-  /* line 83, main.scss */
+  /* line 89, main.scss */
   .createTodoButton {
-    background-color: #80c3e6;
+    background-color: #8dceee;
     color: #fff;
     border-radius: 50%;
     padding: 0.3em;
@@ -88,16 +93,16 @@ body {
     box-shadow: 2px 2.5px 5px rgba(0, 0, 1, 0.5);
     z-index: 1000; }
 
-  /* line 99, main.scss */
+  /* line 103, main.scss */
   .MuiBottomNavigation-root.bottom-navigation-bar {
     position: absolute;
-    background-color: #80c3e6;
+    background-color: #8dceee;
     color: #fff;
     width: 100%;
     top: calc(100vh - 3.5em);
     z-index: 100; }
 
-  /* line 107, main.scss */
+  /* line 111, main.scss */
   .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     position: absolute;
     top: -82vh;
@@ -107,16 +112,16 @@ body {
     z-index: 20;
     text-align: center; }
 
-  /* line 116, main.scss */
+  /* line 120, main.scss */
   .MuiButtonBase-root.MuiBottomNavigationAction-root.Mui-selected {
     color: #fff; }
 
-  /* line 119, main.scss */
+  /* line 123, main.scss */
   .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     box-shadow: none;
     background: none; }
 
-  /* line 123, main.scss */
+  /* line 127, main.scss */
   .cards {
     float: none;
     width: 92%;

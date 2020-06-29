@@ -2,7 +2,6 @@ body {
     background-image: url(./hex/19366.jpg);
 
     background-size: cover;
-    // background-repeat: none;
 }
 //POPUP SECTION
 .popup-overlay.popup-content {
@@ -14,7 +13,8 @@ body {
 // .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded
 .MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
     box-shadow: none;
-    background: rgba(0, 0, 0, 0.1);
+    // background: rgba(0, 0, 0, 0.1);
+    background: #8dceee;
 }
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     background: none;
@@ -24,7 +24,8 @@ body {
 }
 
 .MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
-    color: #80c3e6;
+    // color: #8dceee;
+    color: #fff;
 }
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     // box-shadow: none;
@@ -32,7 +33,8 @@ body {
 }
 
 .PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3 {
-    background-color: #80c3e6;
+    // background-color: #8dceee;
+    background-color: #fff;
 }
 .MuiBottomNavigation-root.bottom-navigation-bar {
     display: none;
@@ -72,23 +74,25 @@ body {
     cursor: pointer;
 }
 @media screen and (max-width: 760px) {
+    body {
+        background-image: url(./hex/19366-1.jpg);
+        background-size: 100%;
+        // background-repeat: no-repeat;
+    }
     //Enable Bottom navigation bar Ṃobile
     .MuiBottomNavigation-root.bottom-navigation-bar {
         display: flex;
         background: transparent;
     }
-    // Disable desktop tabs.
 
     //Add todos button
     .createTodoButton {
-        // background-color: #9be4f5;
-        background-color: #80c3e6;
+        background-color: #8dceee;
         color: #fff;
         border-radius: 50%;
         padding: 0.3em;
         position: fixed;
         top: calc(100vh - 110px);
-        // margin-right: 43.5%;
         right: 0.2em;
         border: 2px solid rgba(255, 255, 255, 0.25);
         box-shadow: 2px 2.5px 5px rgba(0, 0, 1, 0.5);
@@ -98,7 +102,7 @@ body {
     //Bottom navigation bar
     .MuiBottomNavigation-root.bottom-navigation-bar {
         position: absolute;
-        background-color: #80c3e6;
+        background-color: #8dceee;
         color: #fff;
         width: 100%;
         top: calc(100vh - 3.5em);
