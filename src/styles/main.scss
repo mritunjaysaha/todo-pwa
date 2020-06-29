@@ -1,9 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Poppins:wght@500&display=swap");
 $tabs-color: #8dceee;
 
 body {
     background-image: url(./hex/19366.jpg);
-
     background-size: cover;
+    font-family: "Poppins", sans-serif;
+}
+.logo {
+    font-size: 32px;
+    margin-left: 1em;
+    font-family: "Merriweather", serif;
 }
 //POPUP SECTION
 .popup-overlay.popup-content {
@@ -69,8 +75,21 @@ body {
 }
 
 // TODO button
-.createTodoButton {
+.popup-container {
+    display: block;
+    align-items: center;
+}
+.container-todo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: transparent;
+    border: none;
     cursor: pointer;
+    margin-left: 2em;
+    &:focus {
+        outline: none;
+    }
 }
 
 //POPUP JS
@@ -85,7 +104,7 @@ body {
 .popup {
     border: none;
     margin: 0.2em 0;
-    max-width: 40%;
+    width: 40%;
     border-radius: 15px;
     height: 2em;
     justify-content: center;
@@ -110,14 +129,7 @@ body {
     // margin-bottom: 1em;
     border: none !important;
 }
-// .MuiToolbar-root.MuiToolbar-regular.MuiPickersToolbar-toolbar.MuiPickerDTToolbar-toolbar.MuiToolbar-gutters,
-// .MuiButtonBase-root.MuiIconButton-root.MuiPickersDay-day.MuiPickersDay-current.MuiPickersDay-daySelected,
-// .MuiPickersClockPointer-thumb.MuiPickersClockPointer-noPoint {
-//     background-color: $tabs-color;
-// }
-// .MuiButton-label {
-//     color: $tabs-color;
-// }
+
 .PrivateTabIndicator-root-6.PrivateTabIndicator-colorSecondary-8.MuiTabs-indicator {
     background-color: #fff;
 }
@@ -125,6 +137,9 @@ body {
     body {
         background-image: url(./hex/19366-1.jpg);
         background-size: 120%;
+    }
+    .logo {
+        margin: 0.5em 0 0 1em;
     }
     //Enable Bottom navigation bar Ṃobile
     .MuiBottomNavigation-root.bottom-navigation-bar {
@@ -175,5 +190,12 @@ body {
         float: none;
         width: 90%;
         margin: 4%;
+    }
+
+    .popup {
+        width: 100%;
+    }
+    .createTodo-p {
+        display: none;
     }
 }

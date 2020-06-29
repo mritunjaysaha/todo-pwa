@@ -3,7 +3,7 @@ import CenteredTabs from "./components/tabs.component";
 function App() {
     return (
         <>
-            <h3>Todo</h3>
+            <h3 className="logo">Todo</h3>
             <CenteredTabs />
         </>
     );

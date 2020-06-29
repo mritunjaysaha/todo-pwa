@@ -23,6 +23,7 @@ const contentStyle = {
     background: "rgba(0,0,0,0.4)",
     "flex-direction": "column",
     padding: "2em 2em 0 2em",
+    "align-items": "center",
 };
 
 const overlayStyle = {
@@ -194,10 +195,16 @@ export default function CenteredTabs() {
     return (
         <>
             <Popup
-                trigger={<AddIcon className="createTodoButton" />}
+                trigger={
+                    <button className="container-todo">
+                        <AddIcon className="createTodoButton" />
+                        <p className="createTodo-p">Create Todo</p>
+                    </button>
+                }
                 modal
                 overlayStyle={overlayStyle}
                 contentStyle={contentStyle}
+                className="popup-container"
             >
                 {(close) => (
                     <>
