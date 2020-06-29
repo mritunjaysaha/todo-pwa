@@ -20,9 +20,11 @@ body {
 
 /*********Desktop TABS************/
 /* line 21, main.scss */
+.MuiTabs-flexContainer.MuiTabs-centered {
+    background-color: #f00;
+}
 .MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
     box-shadow: none;
-    background-color: #8dceee;
 }
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     background: none;
@@ -35,7 +37,6 @@ body {
     color: #fff;
 }
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
-    /* // box-shadow: none; */
     box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
