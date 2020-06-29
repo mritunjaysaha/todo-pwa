@@ -16,6 +16,8 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 import HomeIcon from "@material-ui/icons/Home";
 import BlockOutlinedIcon from "@material-ui/icons/BlockOutlined";
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
 const contentStyle = {
     display: "flex",
     background: "rgba(0,0,0,0.4)",
@@ -26,7 +28,11 @@ const contentStyle = {
 const overlayStyle = {
     background: "rgba(0,0,0,0.4)",
 };
-
+const defaultMaterialTheme = createMuiTheme({
+    palette: {
+        primary: { 500: "#8dceee" },
+    },
+});
 const useStyles = makeStyles({
     root: {
         flexGrow: 1,
@@ -196,10 +202,12 @@ export default function CenteredTabs() {
                 {(close) => (
                     <>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <DateTimePicker
-                                value={date}
-                                onChange={handleDate}
-                            />
+                            <ThemeProvider theme={defaultMaterialTheme}>
+                                <DateTimePicker
+                                    value={date}
+                                    onChange={handleDate}
+                                />
+                            </ThemeProvider>
                         </MuiPickersUtilsProvider>
                         <input
                             className="popup popup-input"

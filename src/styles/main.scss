@@ -85,11 +85,11 @@ body {
 .popup {
     border: none;
     margin: 0.2em 0;
-    width: 100%;
+    max-width: 40%;
     border-radius: 15px;
     height: 2em;
-    align-items: flex-end;
-
+    justify-content: center;
+    margin-top: 1em;
     &:focus {
         outline: none;
     }
@@ -107,17 +107,20 @@ body {
 .MuiInputBase-input.MuiInput-input {
     color: #fff;
     text-align: center;
-    margin-bottom: 1em;
+    // margin-bottom: 1em;
     border: none !important;
 }
-.MuiToolbar-root.MuiToolbar-regular.MuiPickersToolbar-toolbar.MuiPickerDTToolbar-toolbar.MuiToolbar-gutters,
-.MuiButtonBase-root.MuiIconButton-root.MuiPickersDay-day.MuiPickersDay-current.MuiPickersDay-daySelected {
-    background-color: $tabs-color;
+// .MuiToolbar-root.MuiToolbar-regular.MuiPickersToolbar-toolbar.MuiPickerDTToolbar-toolbar.MuiToolbar-gutters,
+// .MuiButtonBase-root.MuiIconButton-root.MuiPickersDay-day.MuiPickersDay-current.MuiPickersDay-daySelected,
+// .MuiPickersClockPointer-thumb.MuiPickersClockPointer-noPoint {
+//     background-color: $tabs-color;
+// }
+// .MuiButton-label {
+//     color: $tabs-color;
+// }
+.PrivateTabIndicator-root-6.PrivateTabIndicator-colorSecondary-8.MuiTabs-indicator {
+    background-color: #fff;
 }
-.MuiButton-label {
-    color: $tabs-color;
-}
-
 @media screen and (max-width: 760px) {
     body {
         background-image: url(./hex/19366-1.jpg);
@@ -170,7 +173,7 @@ body {
     }
     .cards {
         float: none;
-        width: 92%;
+        width: 90%;
         margin: 4%;
     }
 }
