@@ -21,7 +21,10 @@ body {
 /*********Desktop TABS************/
 /* line 21, main.scss */
 .MuiTabs-flexContainer.MuiTabs-centered {
-    background-color: #f00;
+    background-color: #8dceee;
+}
+.jss2.jss3.MuiTabs-indicator {
+    background-color: #fff;
 }
 .MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
     box-shadow: none;
