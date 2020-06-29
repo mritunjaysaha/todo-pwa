@@ -1,3 +1,5 @@
+$tabs-color: #8dceee;
+
 body {
     background-image: url(./hex/19366.jpg);
 
@@ -10,11 +12,9 @@ body {
     }
 }
 /*********Desktop TABS************/
-// .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded
 .MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
     box-shadow: none;
-    // background: rgba(0, 0, 0, 0.1);
-    background: #8dceee;
+    background: $tabs-color;
 }
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     background: none;
@@ -24,7 +24,6 @@ body {
 }
 
 .MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
-    // color: #8dceee;
     color: #fff;
 }
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
@@ -33,7 +32,7 @@ body {
 }
 
 .PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3 {
-    // background-color: #8dceee;
+    // background-color: $tabs-color;
     background-color: #fff;
 }
 .MuiBottomNavigation-root.bottom-navigation-bar {
@@ -73,11 +72,56 @@ body {
 .createTodoButton {
     cursor: pointer;
 }
+
+//POPUP JS
+.popup-close {
+    background-color: transparent;
+    border: none;
+    margin-top: 2em;
+    margin-bottom: 0.1em;
+    font-size: 2em;
+    color: #fff;
+}
+.popup {
+    border: none;
+    margin: 0.2em 0;
+    width: 100%;
+    border-radius: 15px;
+    height: 2em;
+    align-items: flex-end;
+
+    &:focus {
+        outline: none;
+    }
+}
+.popup-input::placeholder {
+    text-align: center;
+}
+
+.popup-add-btn {
+    background-color: $tabs-color;
+    color: #fff;
+}
+
+//date and time picker
+.MuiInputBase-input.MuiInput-input {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1em;
+    border: none !important;
+}
+.MuiToolbar-root.MuiToolbar-regular.MuiPickersToolbar-toolbar.MuiPickerDTToolbar-toolbar.MuiToolbar-gutters,
+.MuiButtonBase-root.MuiIconButton-root.MuiPickersDay-day.MuiPickersDay-current.MuiPickersDay-daySelected {
+    background-color: $tabs-color;
+}
+.MuiButton-label {
+    color: $tabs-color;
+}
+
 @media screen and (max-width: 760px) {
     body {
         background-image: url(./hex/19366-1.jpg);
         background-size: 120%;
-        // background-repeat: no-repeat;
     }
     //Enable Bottom navigation bar Ṃobile
     .MuiBottomNavigation-root.bottom-navigation-bar {
@@ -87,7 +131,7 @@ body {
 
     //Add todos button
     .createTodoButton {
-        background-color: #8dceee;
+        background-color: $tabs-color;
         color: #fff;
         border-radius: 50%;
         padding: 0.3em;
@@ -102,7 +146,7 @@ body {
     //Bottom navigation bar
     .MuiBottomNavigation-root.bottom-navigation-bar {
         position: absolute;
-        background-color: #8dceee;
+        background-color: $tabs-color;
         color: #fff;
         width: 100%;
         top: calc(100vh - 3.5em);

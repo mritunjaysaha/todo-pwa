@@ -17,8 +17,10 @@ import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlin
 import HomeIcon from "@material-ui/icons/Home";
 import BlockOutlinedIcon from "@material-ui/icons/BlockOutlined";
 const contentStyle = {
-    background: "#f00",
-    height: "50%",
+    display: "flex",
+    background: "rgba(0,0,0,0.4)",
+    "flex-direction": "column",
+    padding: "2em 2em 0 2em",
 };
 
 const overlayStyle = {
@@ -199,10 +201,20 @@ export default function CenteredTabs() {
                                 onChange={handleDate}
                             />
                         </MuiPickersUtilsProvider>
-                        <input type="text" onChange={handleInput} />
+                        <input
+                            className="popup popup-input"
+                            type="text"
+                            onChange={handleInput}
+                            placeholder="Enter name"
+                        />
 
-                        <button onClick={addTask}>Add</button>
-                        <button className="close" onClick={close}>
+                        <button
+                            className="popup popup-add-btn"
+                            onClick={addTask}
+                        >
+                            Add
+                        </button>
+                        <button className="popup-close" onClick={close}>
                             &times;
                         </button>
                     </>
