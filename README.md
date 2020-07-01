@@ -1,5 +1,3 @@
-### Not yet completed. The desktop version and Popup will be updated.
-
 # Todo Timer PWA
 
 Todo website for the job challenge #ttjc
