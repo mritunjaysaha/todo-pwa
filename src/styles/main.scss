@@ -2,9 +2,8 @@
 $tabs-color: #8dceee;
 
 body {
-    background-image: url(./hex/19366.jpg);
-    background-size: cover;
     font-family: "Poppins", sans-serif;
+    background-color: #edf2f7;
 }
 .logo {
     font-size: 32px;
@@ -134,10 +133,6 @@ body {
     background-color: #fff;
 }
 @media screen and (max-width: 760px) {
-    body {
-        background-image: url(./hex/19366-1.jpg);
-        background-size: 120%;
-    }
     .logo {
         margin: 0.5em 0 0 1em;
     }
