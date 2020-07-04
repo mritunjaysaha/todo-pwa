@@ -39,7 +39,8 @@ body {
   box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3 {
+.PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3,
+.jss2.jss3.MuiTabs-indicator {
   background-color: #fff;
 }
 
