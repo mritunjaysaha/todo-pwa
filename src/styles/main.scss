@@ -21,6 +21,9 @@ body {
     box-shadow: none;
     background: $tabs-color;
 }
+.MuiTabs-flexContainer.MuiTabs-centered {
+    background-color: $tabs-color;
+}
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     background: none;
     box-shadow: none !important;

@@ -20,6 +20,10 @@ body {
   background: #8dceee;
 }
 
+.MuiTabs-flexContainer.MuiTabs-centered {
+  background-color: #8dceee;
+}
+
 .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
   background: none;
   box-shadow: none !important;
