@@ -2,6 +2,7 @@ import React from "react";
 import Counter from "./counter.component";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
+
 export default function TodoList(props) {
     const todos = props.list;
     const listFor = props.listFor;

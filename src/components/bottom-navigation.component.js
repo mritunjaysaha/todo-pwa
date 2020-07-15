@@ -2,11 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import FolderIcon from "@material-ui/icons/Folder";
-import RestoreIcon from "@material-ui/icons/Restore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-
+import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
+import HomeIcon from "@material-ui/icons/Home";
+import BlockOutlinedIcon from "@material-ui/icons/BlockOutlined";
 export default function LabelBottomNavigation() {
     const [value, setValue] = React.useState("recents");
 
@@ -23,17 +21,17 @@ export default function LabelBottomNavigation() {
             <BottomNavigationAction
                 label="Active"
                 value="active"
-                icon={<RestoreIcon />}
+                icon={<HomeIcon />}
             />
             <BottomNavigationAction
                 label="Completed"
                 value="completed"
-                icon={<RestoreIcon />}
+                icon={<CheckCircleOutlineOutlinedIcon />}
             />
             <BottomNavigationAction
                 label="Missed"
                 value="missed"
-                icon={<RestoreIcon />}
+                icon={<BlockOutlinedIcon />}
             />
         </BottomNavigation>
     );

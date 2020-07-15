@@ -5,10 +5,8 @@ export default function Counter(props) {
     const status = props.status;
     const items = props.items;
     const fullList = props.fullList;
-    // console.log("item", items);
-    // console.log("fullList", fullList);
+
     function getReamainingTime(endtime) {
-        // converts the string to millisecond
         const total = Date.parse(endtime) - Date.parse(new Date());
         const seconds = Math.floor((total / 1000) % 60);
         const minutes = Math.floor((total / 1000 / 60) % 60);
