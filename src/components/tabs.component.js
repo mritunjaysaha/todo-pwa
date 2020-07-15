@@ -1,30 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { set, get } from "idb-keyval";
-import Popup from "reactjs-popup";
-import DateFnsUtils from "@date-io/date-fns";
-import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import AddIcon from "@material-ui/icons/Add";
-import "../styles/main.css";
-import { createMuiTheme } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
 import SimpleTabs from "./simple-tab.component";
-
-const contentStyle = {
-    display: "flex",
-    background: "rgba(0,0,0,0.4)",
-    "flex-direction": "column",
-    padding: "2em 2em 0 2em",
-    "align-items": "center",
-};
-
-const overlayStyle = {
-    background: "rgba(0,0,0,0.4)",
-};
-const defaultMaterialTheme = createMuiTheme({
-    palette: {
-        primary: { 500: "#8dceee" },
-    },
-});
+import AddTodo from "./popupbutton.component";
+import "../styles/main.css";
 
 export default function CenteredTabs() {
     const [date, setDate] = useState(new Date());
@@ -85,48 +63,12 @@ export default function CenteredTabs() {
 
     return (
         <>
-            <Popup
-                trigger={
-                    <button className="container-todo">
-                        <AddIcon className="createTodoButton" />
-                        <p className="createTodo-p">Create Todo</p>
-                    </button>
-                }
-                modal
-                overlayStyle={overlayStyle}
-                contentStyle={contentStyle}
-                className="popup-container"
-            >
-                {(close) => (
-                    <>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <ThemeProvider theme={defaultMaterialTheme}>
-                                <DateTimePicker
-                                    value={date}
-                                    onChange={handleDate}
-                                />
-                            </ThemeProvider>
-                        </MuiPickersUtilsProvider>
-                        <input
-                            className="popup popup-input"
-                            type="text"
-                            onChange={handleInput}
-                            placeholder="Enter name"
-                        />
-
-                        <button
-                            className="popup popup-add-btn"
-                            onClick={addTask}
-                        >
-                            Add
-                        </button>
-                        <button className="popup-close" onClick={close}>
-                            &times;
-                        </button>
-                    </>
-                )}
-            </Popup>
-
+            <AddTodo
+                date={date}
+                handleDate={handleDate}
+                handleInput={handleInput}
+                addTask={addTask}
+            />
             <SimpleTabs />
         </>
     );

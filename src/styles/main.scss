@@ -17,36 +17,6 @@ body {
     }
 }
 /*********Desktop TABS************/
-.MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
-    box-shadow: none;
-    background: $tabs-color;
-}
-.MuiTabs-flexContainer.MuiTabs-centered {
-    background-color: $tabs-color;
-}
-.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
-    background: none;
-    box-shadow: none !important;
-    text-align: center;
-    align-items: center;
-}
-
-.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
-    color: #fff;
-}
-.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
-    // box-shadow: none;
-    box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.75);
-}
-
-.PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3,
-span.jss2.jss3.MuiTabs-indicator {
-    // background-color: $tabs-color;
-    background-color: #fff;
-}
-.MuiBottomNavigation-root.bottom-navigation-bar {
-    display: none;
-}
 /**************TODO's*****************/
 
 .cards {

@@ -15,39 +15,6 @@ body {
 }
 
 /*********Desktop TABS************/
-.MuiPaper-root.makeStyles-root-1.MuiPaper-elevation1.MuiPaper-rounded {
-  box-shadow: none;
-  background: #8dceee;
-}
-
-.MuiTabs-flexContainer.MuiTabs-centered {
-  background-color: #8dceee;
-}
-
-.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
-  background: none;
-  box-shadow: none !important;
-  text-align: center;
-  align-items: center;
-}
-
-.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
-  color: #fff;
-}
-
-.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
-  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.75);
-}
-
-.PrivateTabIndicator-root-2.PrivateTabIndicator-colorPrimary-3,
-span.jss2.jss3.MuiTabs-indicator {
-  background-color: #fff;
-}
-
-.MuiBottomNavigation-root.bottom-navigation-bar {
-  display: none;
-}
-
 /**************TODO's*****************/
 .cards {
   border: 4px solid #000;
