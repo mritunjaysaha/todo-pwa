@@ -64,19 +64,19 @@ export default function SimpleTabs() {
                     aria-label="simple tabs example"
                     centered
                 >
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
+                    <Tab label="Active" {...a11yProps(0)} />
+                    <Tab label="Completed" {...a11yProps(1)} />
+                    <Tab label="Missed" {...a11yProps(2)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                Item One
+                Active
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
+                Completed
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                Missed
             </TabPanel>
         </div>
     );
