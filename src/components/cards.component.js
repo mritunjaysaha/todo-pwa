@@ -4,6 +4,7 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 
 export default function Cards(props) {
+    console.log("props", props);
     return (
         <div className="cards" id={props.id}>
             <p>{props.text || "todo"}</p>

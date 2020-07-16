@@ -2,6 +2,7 @@ import React from "react";
 import Cards from "./cards.component";
 export default function CreateTodoList(props) {
     const list = props.list;
+    console.log("handle", list);
     const todolist = list.map((todo) => (
         <Cards
             status={todo.status}
@@ -10,6 +11,7 @@ export default function CreateTodoList(props) {
             deadline={todo.deadline}
             onClickComplete={props.onClickComplete}
             onDelete={props.onClickDelete}
+            handleMissed={props.handleMissed}
         />
     ));
 

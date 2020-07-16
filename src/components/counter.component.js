@@ -10,6 +10,9 @@ export default function Counter(props) {
         const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
         const days = Math.floor(total / (1000 * 60 * 60 * 24));
 
+        if (status === "active" && total < 0) {
+            props.handleMissed(props.id);
+        }
         if (status === "completed" || status === "missed") {
             return {
                 days: 0,

@@ -23,7 +23,6 @@ export default function CenteredTabs() {
                 missed = [];
             await get("todo").then((val) => {
                 if (val != null) {
-                    console.log(val);
                     setItems(val);
 
                     val.map((v) => {
@@ -31,7 +30,7 @@ export default function CenteredTabs() {
                             active.push(v);
                         } else if (v.status === "completed") {
                             completed.push(v);
-                        } else {
+                        } else if (v.status === "missed") {
                             missed.push(v);
                         }
                     });
@@ -75,11 +74,7 @@ export default function CenteredTabs() {
         }
     }
     function handleDelete(id, status) {
-        console.log(id);
-        console.log("items1", items);
         const filteredItems = items.filter((todo) => todo.id !== id);
-        console.log("filtered", filteredItems);
-        console.log("items2", items);
         setItems(filteredItems);
 
         if (status === "active") {
@@ -94,7 +89,6 @@ export default function CenteredTabs() {
             const filteredItems = missedTodo.filter((todo) => todo.id !== id);
             setMissedTodo(filteredItems);
         }
-        console.log("items3", items);
         set("todo", filteredItems);
     }
     function handleCompleted(id) {
@@ -110,13 +104,24 @@ export default function CenteredTabs() {
         setActiveTodo(filteredActiveTodo);
         set("todo", items);
     }
+    function handleMissed(id) {
+        items.map((i) => {
+            if (i.id === id) {
+                i.status = "missed";
+                const data = [...missedTodo, i];
+                setMissedTodo(data);
+            }
+        });
 
+        set("todo", items);
+    }
     function ActiveTodosList() {
         return (
             <CreateTodoList
                 list={activeTodo}
                 onClickComplete={handleCompleted}
                 onClickDelete={handleDelete}
+                handleMissed={handleMissed}
             />
         );
     }
