@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { set } from "idb-keyval";
+// import { set } from "idb-keyval";
 export default function Counter(props) {
     const date = props.date;
     const status = props.status;
-    const items = props.items;
-    const fullList = props.fullList;
-
     function getReamainingTime(endtime) {
         const total = Date.parse(endtime) - Date.parse(new Date());
         const seconds = Math.floor((total / 1000) % 60);
@@ -13,7 +10,7 @@ export default function Counter(props) {
         const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
         const days = Math.floor(total / (1000 * 60 * 60 * 24));
 
-        if (total < 0 || status !== "active") {
+        if (status === "active" && total < 0) {
             return {
                 days: 0,
                 hours: 0,

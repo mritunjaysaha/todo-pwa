@@ -74,10 +74,10 @@ export default function SimpleTabs(props) {
                 {props.activelist()}
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Completed
+                {props.completedlist()}
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Missed
+                {props.missedlist()}
             </TabPanel>
         </div>
     );

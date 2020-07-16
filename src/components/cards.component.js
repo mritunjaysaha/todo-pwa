@@ -9,19 +9,26 @@ export default function Cards(props) {
             <p>{props.text || "todo"}</p>
             <p>{String(props.deadline).slice(0, 21)}</p>
             {console.log("cards", String(props.deadline).slice(0, 21))}
-            <Counter date={props.deadline} status={props.status} />
+            <Counter
+                id={props.id}
+                date={props.deadline}
+                status={props.status}
+                handleMissed={props.handleMissed}
+            />
             <div className="cards-button-container">
                 <button className="cards-button">
                     <DeleteOutlineOutlinedIcon fontSize="large" />
                 </button>
-                <button className="cards-button">
-                    <CheckCircleOutlineOutlinedIcon
-                        onClick={() => {
-                            props.onClickComplete(props.id);
-                        }}
-                        fontSize="large"
-                    />
-                </button>
+                {props.status === "active" ? (
+                    <button className="cards-button">
+                        <CheckCircleOutlineOutlinedIcon
+                            onClick={() => {
+                                props.onClickComplete(props.id);
+                            }}
+                            fontSize="large"
+                        />
+                    </button>
+                ) : null}
             </div>
         </div>
     );
