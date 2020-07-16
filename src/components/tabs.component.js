@@ -25,15 +25,25 @@ export default function CenteredTabs() {
                 if (val != null) {
                     setItems(val);
 
-                    val.map((v) => {
-                        if (v.status === "active") {
-                            active.push(v);
-                        } else if (v.status === "completed") {
-                            completed.push(v);
-                        } else if (v.status === "missed") {
-                            missed.push(v);
+                    //  val.map((v) => {
+                    //     if (v.status === "active") {
+                    //         active.push(v);
+                    //     } else if (v.status === "completed") {
+                    //         completed.push(v);
+                    //     } else if (v.status === "missed") {
+                    //         missed.push(v);
+                    //     }
+                    // });
+
+                    for (let i = 0; i < val.length; i++) {
+                        if (val[i].status === "active") {
+                            active.push(val[i]);
+                        } else if (val[i].status === "completed") {
+                            completed.push(val[i]);
+                        } else if (val[i].status === "missed") {
+                            missed.push(val[i]);
                         }
-                    });
+                    }
                 }
                 setActiveTodo(active);
                 setCompletedTodo(completed);
@@ -93,27 +103,34 @@ export default function CenteredTabs() {
         set("todo", filteredItems);
     }
     function handleCompleted(id) {
-        items.map((i) => {
-            if (i.id === id) {
-                i.status = "completed";
-                const data = [...completedTodo, i];
+        // items.map((i) => {
+        //     if (i.id === id) {
+        //         i.status = "completed";
+        //         const data = [...completedTodo, i];
+        //         setCompletedTodo(data);
+        //     }
+        // });
+
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].id === id) {
+                items[i].status = "completed";
+                const data = [...completedTodo, items[i]];
                 setCompletedTodo(data);
             }
-        });
+        }
 
         const filteredActiveTodo = activeTodo.filter((todo) => todo.id !== id);
         setActiveTodo(filteredActiveTodo);
         set("todo", items);
     }
     function handleMissed(id) {
-        items.map((i) => {
-            if (i.id === id) {
-                i.status = "missed";
-                const data = [...missedTodo, i];
-                setMissedTodo(data);
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].id === id) {
+                items[i].status = "missed";
+                const data = [...completedTodo, items[i]];
+                setCompletedTodo(data);
             }
-        });
-
+        }
         set("todo", items);
     }
     function ActiveTodosList() {
