@@ -4,6 +4,7 @@ import SimpleTabs from "./simple-tab.component";
 import AddTodo from "./popupbutton.component";
 import CreateTodoList from "./list-item.component";
 import "../styles/main.css";
+import { da } from "date-fns/locale";
 
 export default function CenteredTabs() {
     const [date, setDate] = useState(new Date());
@@ -70,6 +71,7 @@ export default function CenteredTabs() {
             const data = [...items, newItem];
             setItems(data);
             set("todo", data);
+            setActiveTodo(data);
         }
     }
     function handleDelete(id, status) {
@@ -87,10 +89,10 @@ export default function CenteredTabs() {
             const filteredItems = completedTodo.filter(
                 (todo) => todo.id !== id
             );
-            setActiveTodo(filteredItems);
+            setCompletedTodo(filteredItems);
         } else {
             const filteredItems = missedTodo.filter((todo) => todo.id !== id);
-            setActiveTodo(filteredItems);
+            setMissedTodo(filteredItems);
         }
         console.log("items3", items);
         set("todo", filteredItems);
@@ -99,6 +101,8 @@ export default function CenteredTabs() {
         items.map((i) => {
             if (i.id === id) {
                 i.status = "completed";
+                const data = [...completedTodo, i];
+                setCompletedTodo(data);
             }
         });
 
