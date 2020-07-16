@@ -4,6 +4,7 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 
 export default function Cards(props) {
+    console.log("cards", props);
     return (
         <div className="cards" id={props.id}>
             <p>{props.text || "todo"}</p>
@@ -17,7 +18,12 @@ export default function Cards(props) {
             />
             <div className="cards-button-container">
                 <button className="cards-button">
-                    <DeleteOutlineOutlinedIcon fontSize="large" />
+                    <DeleteOutlineOutlinedIcon
+                        onClick={() => {
+                            props.onDelete(props.id, props.status);
+                        }}
+                        fontSize="large"
+                    />
                 </button>
                 {props.status === "active" ? (
                     <button className="cards-button">

@@ -77,7 +77,17 @@ export default function CenteredTabs() {
         }
         console.log({ items });
     }
+    function handleDelete(id, status) {
+        console.log("delete");
+        const filteredItems = items.filter((todo) => todo.id !== id);
+        setItems(filteredItems);
+        set("todo", items);
 
+        if (status === "active") {
+            const filteredItems = activeTodo.filter((todo) => todo.id !== id);
+            setActiveTodo(filteredItems);
+        }
+    }
     function handleCompleted(id) {
         items.map((i) => {
             if (i.id === id) {
@@ -113,6 +123,7 @@ export default function CenteredTabs() {
             <CreateTodoList
                 list={activeTodo}
                 onClickComplete={handleCompleted}
+                onClickDelete={handleDelete}
             />
         );
     }
@@ -125,6 +136,7 @@ export default function CenteredTabs() {
             <CreateTodoList
                 list={completedTodo}
                 onClickComplete={handleCompleted}
+                onClickDelete={handleDelete}
             />
         );
     }
@@ -138,11 +150,11 @@ export default function CenteredTabs() {
             <CreateTodoList
                 list={missedTodo}
                 onClickComplete={handleCompleted}
+                onClickDelete={handleDelete}
             />
         );
     }
 
-    function deleteTodo() {}
     return (
         <>
             <AddTodo
