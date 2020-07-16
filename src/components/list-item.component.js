@@ -1,7 +1,6 @@
 import React from "react";
 import Cards from "./cards.component";
 export default function CreateTodoList(props) {
-    console.log("props", props);
     const list = props.list;
     const todolist = list.map((todo) => (
         <Cards

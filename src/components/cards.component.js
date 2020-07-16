@@ -4,12 +4,10 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 
 export default function Cards(props) {
-    console.log("cards", props);
     return (
         <div className="cards" id={props.id}>
             <p>{props.text || "todo"}</p>
             <p>{String(props.deadline).slice(0, 21)}</p>
-            {console.log("cards", String(props.deadline).slice(0, 21))}
             <Counter
                 id={props.id}
                 date={props.deadline}

@@ -22,7 +22,7 @@ export default function CenteredTabs() {
                 missed = [];
             await get("todo").then((val) => {
                 if (val != null) {
-                    console.log("val", val);
+                    console.log(val);
                     setItems(val);
 
                     val.map((v) => {
@@ -58,9 +58,6 @@ export default function CenteredTabs() {
         currentItem.deadline = date;
         currentItem.id = Date.now();
         currentItem.status = "active";
-        setTimeout(function () {
-            console.log({ currentItem });
-        }, 0);
 
         const currentDate = new Date();
         setDate(new Date());
@@ -68,25 +65,35 @@ export default function CenteredTabs() {
             alert("Select a valid date");
             return;
         }
-        console.log({ currentItem });
         const newItem = currentItem;
         if (newItem.text !== "") {
             const data = [...items, newItem];
             setItems(data);
             set("todo", data);
         }
-        console.log({ items });
     }
     function handleDelete(id, status) {
-        console.log("delete");
+        console.log(id);
+        console.log("items1", items);
         const filteredItems = items.filter((todo) => todo.id !== id);
+        console.log("filtered", filteredItems);
+        console.log("items2", items);
         setItems(filteredItems);
-        set("todo", items);
 
         if (status === "active") {
             const filteredItems = activeTodo.filter((todo) => todo.id !== id);
             setActiveTodo(filteredItems);
+        } else if (status === "completed") {
+            const filteredItems = completedTodo.filter(
+                (todo) => todo.id !== id
+            );
+            setActiveTodo(filteredItems);
+        } else {
+            const filteredItems = missedTodo.filter((todo) => todo.id !== id);
+            setActiveTodo(filteredItems);
         }
+        console.log("items3", items);
+        set("todo", filteredItems);
     }
     function handleCompleted(id) {
         items.map((i) => {
@@ -100,25 +107,7 @@ export default function CenteredTabs() {
         set("todo", items);
     }
 
-    // function handleMissed(id) {
-    //     console.log("missed");
-    //     items.map((i) => {
-    //         if (i.id === id) {
-    //             i.status = "missed";
-    //         }
-    //     });
-
-    //     const filteredMissedTodo = missedTodo.filter((todo) => todo.id !== id);
-    //     setMissedTodo(filteredMissedTodo);
-
-    //     set("todo", items);
-    // }
-
     function ActiveTodosList() {
-        console.log("active");
-        console.log(activeTodo);
-        activeTodo.map((todo) => console.log("todo", todo));
-
         return (
             <CreateTodoList
                 list={activeTodo}
@@ -129,9 +118,6 @@ export default function CenteredTabs() {
     }
 
     function CompletedTodosList() {
-        console.log("completed");
-        console.log(completedTodo);
-
         return (
             <CreateTodoList
                 list={completedTodo}
@@ -142,10 +128,6 @@ export default function CenteredTabs() {
     }
 
     function MissedTodosList() {
-        console.log("missed");
-        console.log(missedTodo);
-        missedTodo.map((todo) => console.log("todo", todo));
-
         return (
             <CreateTodoList
                 list={missedTodo}
