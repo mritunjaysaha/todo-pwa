@@ -20,11 +20,15 @@ body {
 .MuiAppBar-colorPrimary {
     background-color: $tabs-color !important;
     color: #000 !important;
+
+    .MuiTabs-indicator,
     .jss4 {
         background-color: #000 !important;
     }
 }
-
+.MuiBox-root-7 {
+    padding: 0px !important;
+}
 .MuiBox-root.MuiBox-root-7 {
     height: 50vh;
 
@@ -37,6 +41,7 @@ body {
     background-color: #fff;
     float: left;
     width: 20%;
+    margin-top: 2.5%;
     margin-left: 2.2%;
     margin-bottom: 2.5%;
     border-radius: 4px;
@@ -186,5 +191,10 @@ body {
     }
     .createTodo-p {
         display: none;
+    }
+    .cards {
+        float: none;
+        width: 80%;
+        margin: 5% auto;
     }
 }
