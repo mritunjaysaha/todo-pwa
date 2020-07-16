@@ -15,7 +15,12 @@ export default function Cards(props) {
                     <DeleteOutlineOutlinedIcon fontSize="large" />
                 </button>
                 <button className="cards-button">
-                    <CheckCircleOutlineOutlinedIcon fontSize="large" />
+                    <CheckCircleOutlineOutlinedIcon
+                        onClick={() => {
+                            props.onClickComplete(props.id);
+                        }}
+                        fontSize="large"
+                    />
                 </button>
             </div>
         </div>

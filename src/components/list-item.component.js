@@ -9,6 +9,7 @@ export default function CreateTodoList(props) {
             id={todo.id}
             text={todo.text}
             deadline={todo.deadline}
+            onClickComplete={props.onClickComplete}
         />
     ));
 

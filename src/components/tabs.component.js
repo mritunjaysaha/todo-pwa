@@ -70,7 +70,15 @@ export default function CenteredTabs() {
         console.log({ items });
     }
 
-    function markTodoCompleted() {}
+    function markTodoCompleted(id) {
+        items.map((i) => {
+            if (i.id === id) {
+                i.status = "completed";
+            }
+        });
+        console.log("complete");
+        set("todo", items);
+    }
 
     function markTodoMissed() {}
 
@@ -79,7 +87,12 @@ export default function CenteredTabs() {
         console.log(activeTodo);
         activeTodo.map((todo) => console.log("todo", todo));
 
-        return <CreateTodoList list={activeTodo} />;
+        return (
+            <CreateTodoList
+                list={activeTodo}
+                onClickComplete={markTodoCompleted}
+            />
+        );
     }
 
     function CompletedTodos() {}
