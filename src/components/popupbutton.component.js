@@ -43,17 +43,19 @@ export default function AddTodo(props) {
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <ThemeProvider theme={defaultMaterialTheme}>
                                 <DateTimePicker
+                                    name="date"
                                     value={props.date}
-                                    onChange={() => {
-                                        props.handleDate();
+                                    onChange={(e) => {
+                                        props.handleDate(e);
                                     }}
                                 />
                             </ThemeProvider>
                         </MuiPickersUtilsProvider>
                         <input
+                            name="text"
                             className="popup popup-input"
                             type="text"
-                            onChange={() => props.handleInput()}
+                            onChange={(e) => props.handleInput(e)}
                             placeholder="Enter name"
                         />
 
