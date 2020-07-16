@@ -28,7 +28,7 @@ export default function AddTodo(props) {
         <>
             <Popup
                 trigger={
-                    <button className="container-todo">
+                    <button className="create-todo">
                         <AddIcon className="createTodoButton" />
                         <p className="createTodo-p">Create Todo</p>
                     </button>

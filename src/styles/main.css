@@ -59,16 +59,18 @@ body {
   align-items: center;
 }
 
-.container-todo {
+.create-todo {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: transparent;
-  border: none;
+  background: #8dceee;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  border: 4px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
   margin-left: 2em;
 }
-.container-todo:focus {
+.create-todo:focus {
   outline: none;
 }
 
@@ -96,6 +98,9 @@ body {
 
 .popup-input::placeholder {
   text-align: center;
+}
+.popup-input:focus {
+  padding-left: 1em;
 }
 
 .popup-add-btn {
