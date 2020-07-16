@@ -7,8 +7,8 @@ export default function Cards(props) {
     console.log("props", props);
     return (
         <div className="cards" id={props.id}>
-            <p>{props.text || "todo"}</p>
-            <p>{String(props.deadline).slice(0, 21)}</p>
+            <p>Todo: {props.text || "todo"}</p>
+            <p>Deadline: {String(props.deadline).slice(0, 21)}</p>
             <Counter
                 id={props.id}
                 date={props.deadline}
