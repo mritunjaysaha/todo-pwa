@@ -17,6 +17,13 @@ body {
     }
 }
 /*********Desktop TABS************/
+.MuiAppBar-colorPrimary {
+    background-color: $tabs-color !important;
+    color: #000 !important;
+}
+.PrivateTabIndicator-colorSecondary-4 {
+    background-color: #000 !important;
+}
 /**************TODO's*****************/
 
 .cards {
@@ -104,6 +111,9 @@ body {
     border: none !important;
 }
 
+.PrivateTabIndicator-colorSecondary-10 {
+    background-color: #fff !important;
+}
 .PrivateTabIndicator-root-6.PrivateTabIndicator-colorSecondary-8.MuiTabs-indicator {
     background-color: #fff;
 }

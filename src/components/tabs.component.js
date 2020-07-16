@@ -4,7 +4,7 @@ import SimpleTabs from "./simple-tab.component";
 import AddTodo from "./popupbutton.component";
 import CreateTodoList from "./list-item.component";
 import "../styles/main.css";
-import { da } from "date-fns/locale";
+import "date-fns/locale";
 
 export default function CenteredTabs() {
     const [date, setDate] = useState(new Date());
