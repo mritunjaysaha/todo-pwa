@@ -2,22 +2,38 @@ import React, { useState, useEffect } from "react";
 import { set, get } from "idb-keyval";
 import SimpleTabs from "./simple-tab.component";
 import AddTodo from "./popupbutton.component";
+import CreateTodoList from "./list-item.component";
 import "../styles/main.css";
 
 export default function CenteredTabs() {
     const [date, setDate] = useState(new Date());
     const [items, setItems] = useState([]);
     const [text, setText] = useState();
-
     const currentItem = {};
 
-    useEffect(() => {
-        get("todo").then((val) => {
-            console.log(val);
-            if (val != null) {
-                setItems(val);
-            }
-        });
+    const [activeTodo, setActiveTodo] = useState([]);
+    const [completedTodo, setCompletedTodo] = useState([]);
+    const [missedTodo, setMissedTodo] = useState([]);
+
+    useEffect(function () {
+        async function getData() {
+            const a = [],
+                c = [],
+                m = [];
+            await get("todo").then((val) => {
+                if (val != null) {
+                    console.log("val", val);
+                    setItems(val);
+
+                    val.map((v) => a.push(v));
+                }
+
+                console.log("A", a);
+                setActiveTodo(a);
+            });
+        }
+
+        getData();
     }, []);
 
     function handleInput(e) {
@@ -58,7 +74,13 @@ export default function CenteredTabs() {
 
     function markTodoMissed() {}
 
-    function ActiveTodos() {}
+    function ActiveTodos() {
+        console.log("active");
+        console.log(activeTodo);
+        activeTodo.map((todo) => console.log("todo", todo));
+
+        return <CreateTodoList list={activeTodo} />;
+    }
 
     function CompletedTodos() {}
 
@@ -73,7 +95,7 @@ export default function CenteredTabs() {
                 handleInput={handleInput}
                 addTask={addTask}
             />
-            <SimpleTabs />
+            <SimpleTabs activelist={ActiveTodos} />
         </>
     );
 }

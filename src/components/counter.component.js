@@ -14,19 +14,6 @@ export default function Counter(props) {
         const days = Math.floor(total / (1000 * 60 * 60 * 24));
 
         if (total < 0 || status !== "active") {
-            if (total < 0 && status !== "missed") {
-                const index = fullList.indexOf(items);
-                console.log("index", index);
-                if (index >= 0 && index < fullList.length) {
-                    console.log("fullList", fullList[index]);
-                    fullList[index].active = false;
-                    fullList[index].completed = false;
-                    fullList[index].missed = true;
-                    set("todo", fullList);
-                    console.log("updated");
-                }
-            }
-
             return {
                 days: 0,
                 hours: 0,
