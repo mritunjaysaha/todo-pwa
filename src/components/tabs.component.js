@@ -70,7 +70,8 @@ export default function CenteredTabs() {
             const data = [...items, newItem];
             setItems(data);
             set("todo", data);
-            setActiveTodo(data);
+            const activedata = [...activeTodo, newItem];
+            setActiveTodo(activedata);
         }
     }
     function handleDelete(id, status) {

@@ -24,20 +24,25 @@ body {
 .PrivateTabIndicator-colorSecondary-4 {
     background-color: #000 !important;
 }
+
+.MuiBox-root.MuiBox-root-7 {
+    height: 50vh;
+
+    margin: 0 auto;
+}
+
 /**************TODO's*****************/
 
 .cards {
-    border: 4px solid #000;
-    border-radius: 50px;
-    padding: 1em;
-    width: 20%;
+    background-color: #fff;
     float: left;
-    &::before,
-    &::after {
-        clear: both;
-    }
-
-    margin: 2% 0 0 4%;
+    width: 20%;
+    margin-left: 2.2%;
+    margin-bottom: 2.5%;
+    border-radius: 4px;
+    // border: 4px solid black;
+    padding: 1em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 1, 0.5);
 }
 .cards-button {
     background: none;
@@ -60,22 +65,18 @@ body {
     display: block;
     align-items: center;
 }
-.create-todo {
+.todo-btn {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background: $tabs-color;
-    margin-bottom: 1em;
-    border-radius: 5px;
-    border: 4px solid rgba(255, 255, 255, 0.25);
-
-    cursor: pointer;
+    justify-content: center;
     margin-left: 2em;
-    &:focus {
-        outline: none;
-    }
+    margin-bottom: 1em;
+    padding: 0 1em;
+    background-color: $tabs-color;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
 }
-
 //POPUP JS
 .popup-close {
     background-color: transparent;
@@ -129,6 +130,7 @@ body {
     .logo {
         margin: 0.5em 0 0 1em;
     }
+
     //Enable Bottom navigation bar Ṃobile
     .MuiBottomNavigation-root.bottom-navigation-bar {
         display: flex;
@@ -136,7 +138,7 @@ body {
     }
 
     //Add todos button
-    .createTodoButton {
+    .todo-btn {
         background-color: $tabs-color;
         color: #fff;
         border-radius: 50%;
@@ -147,6 +149,10 @@ body {
         border: 2px solid rgba(255, 255, 255, 0.25);
         box-shadow: 2px 2.5px 5px rgba(0, 0, 1, 0.5);
         z-index: 1000;
+
+        span {
+            display: none;
+        }
     }
 
     //Bottom navigation bar
@@ -173,11 +179,6 @@ body {
     .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
         box-shadow: none;
         background: none;
-    }
-    .cards {
-        float: none;
-        width: 90%;
-        margin: 4%;
     }
 
     .popup {
