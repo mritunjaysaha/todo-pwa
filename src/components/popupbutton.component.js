@@ -30,9 +30,8 @@ export default function AddTodo(props) {
                 trigger={
                     <button className="todo-btn">
                         <AddIcon />
-                        <span>
-                            <p>Todo</p>
-                        </span>
+
+                        <p>Todo</p>
                     </button>
                 }
                 modal

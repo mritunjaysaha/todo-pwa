@@ -4,7 +4,10 @@ import "antd/dist/antd.css";
 function App() {
     return (
         <>
-            <h3 className="logo">Todo</h3>
+            <nav>
+                {" "}
+                <h3 className="logo">Todo</h3>
+            </nav>
             <CenteredTabs />
         </>
     );

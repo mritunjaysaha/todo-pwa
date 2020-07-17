@@ -11,10 +11,10 @@ export default function AntdTab(props) {
                 {props.activelist()}
             </TabPane>
             <TabPane tab="Completed" key="2">
-                {props.activelist()}
+                {props.completedlist()}
             </TabPane>
             <TabPane tab="Missed" key="3">
-                {props.activelist()}
+                {props.missedlist()}
             </TabPane>
         </Tabs>
     );

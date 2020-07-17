@@ -3,49 +3,47 @@ $tabs-color: #8dceee;
 
 body {
     font-family: "Poppins", sans-serif;
-    background-color: #edf2f7;
+    background-image: url(./Confetti-Doodles.svg);
+
+    /* background by SVGBackgrounds.com */
 }
 .logo {
     font-size: 32px;
     margin-left: 1em;
     font-family: "Merriweather", serif;
 }
-//POPUP SECTION
-.popup-overlay.popup-content {
-    &:content {
-        background: #f00;
-    }
+nav {
+    background-color: $tabs-color;
 }
 /*********Desktop TABS************/
-.MuiAppBar-colorPrimary {
-    background-color: $tabs-color !important;
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: #000 !important;
-
-    .MuiTabs-indicator,
-    .jss4 {
-        background-color: #000 !important;
+    font-weight: 500;
+}
+.ant-tabs-tab-btn {
+    border: none;
+}
+.ant-tabs-tab {
+    &:hover {
+        color: #000;
+        border: none;
     }
 }
-.MuiBox-root-7 {
-    padding: 0px !important;
+.ant-tabs-tabpane.ant-tabs-tabpane-active {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 0 0 1;
+    min-height: 75vh;
+    max-height: 100%;
 }
-.MuiBox-root.MuiBox-root-7 {
-    height: 50vh;
-
-    margin: 0 auto;
-}
-
 /**************TODO's*****************/
 
 .cards {
     background-color: #fff;
-    float: left;
-    width: 20%;
-    margin-top: 2.5%;
-    margin-left: 2.2%;
-    margin-bottom: 2.5%;
+    margin: 2em;
     border-radius: 4px;
-    // border: 4px solid black;
     padding: 1em;
     box-shadow: 0px 0px 10px rgba(0, 0, 1, 0.5);
 }
@@ -53,7 +51,6 @@ body {
     background: none;
     border: none;
     width: 100%;
-
     &:focus {
         outline: none;
     }
@@ -73,14 +70,15 @@ body {
 .todo-btn {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
     margin-left: 2em;
     margin-bottom: 1em;
-    padding: 0 1em;
     background-color: $tabs-color;
     border-radius: 4px;
     border: 2px solid rgba(255, 255, 255, 0.25);
+    padding: 1em 1em 0 1em;
+    .MuiSvgIcon-root {
+        margin-bottom: -0.25em;
+    }
 }
 //POPUP JS
 .popup-close {
@@ -121,7 +119,6 @@ body {
 .MuiInputBase-input.MuiInput-input {
     color: #fff;
     text-align: center;
-    // margin-bottom: 1em;
     border: none !important;
 }
 
@@ -135,7 +132,10 @@ body {
     .logo {
         margin: 0.5em 0 0 1em;
     }
-
+    nav {
+        margin-top: -1em;
+        padding: 1em;
+    }
     //Enable Bottom navigation bar Ṃobile
     .MuiBottomNavigation-root.bottom-navigation-bar {
         display: flex;
@@ -149,52 +149,31 @@ body {
         border-radius: 50%;
         padding: 0.3em;
         position: fixed;
-        top: calc(100vh - 110px);
-        right: 0.2em;
+        bottom: 10px;
+
+        right: 10px;
         border: 2px solid rgba(255, 255, 255, 0.25);
         box-shadow: 2px 2.5px 5px rgba(0, 0, 1, 0.5);
         z-index: 1000;
 
-        span {
+        p {
             display: none;
         }
+        .MuiSvgIcon-root {
+            margin-bottom: 0;
+        }
+    }
+    .ant-tabs-tabpane.ant-tabs-tabpane-active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    //Bottom navigation bar
-    .MuiBottomNavigation-root.bottom-navigation-bar {
-        position: absolute;
-        background-color: $tabs-color;
-        color: #fff;
-        width: 100%;
-        top: calc(100vh - 3.5em);
-        z-index: 100;
-    }
-    .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
-        position: absolute;
-        top: -82vh;
-        height: 82vh;
-        overflow-y: scroll;
-        width: 100%;
-        z-index: 20;
-        text-align: center;
-    }
-    .MuiButtonBase-root.MuiBottomNavigationAction-root.Mui-selected {
-        color: #fff;
-    }
-    .MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
-        box-shadow: none;
-        background: none;
-    }
-
-    .popup {
-        width: 100%;
-    }
     .createTodo-p {
         display: none;
     }
     .cards {
-        float: none;
-        width: 80%;
+        width: 100%;
         margin: 5% auto;
     }
 }
