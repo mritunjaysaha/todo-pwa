@@ -16,6 +16,28 @@ body {
 nav {
     background-color: transparent;
 }
+
+// empty background illustration
+
+.empty-active-todo,
+.empty-completed-todo,
+.empty-missed-todo {
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    background-position: center;
+}
+
+.empty-active-todo {
+    background-image: url(./illustrations/undraw_Notify_re_65on.svg);
+}
+.empty-completed-todo {
+    background-image: url(./illustrations/undraw_Analysis_re_w2vd.svg);
+}
+.empty-missed-todo {
+    background-image: url(./illustrations/undraw_Updated_re_u4yh.svg);
+}
 /*********Desktop TABS************/
 .ant-tabs-nav-wrap {
     background-color: rgba(0, 0, 0, 0.25);
@@ -43,9 +65,13 @@ nav {
     max-height: 100%;
 }
 /**************TODO's*****************/
-
+.cards-container {
+    width: 100%;
+    text-align: center;
+}
 .cards {
     background-color: #fff;
+    width: 20%;
     margin: 2em;
     border-radius: 4px;
     padding: 1em;

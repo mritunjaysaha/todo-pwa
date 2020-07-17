@@ -117,34 +117,46 @@ export default function CenteredTabs() {
         set("todo", items);
     }
     function ActiveTodosList() {
-        return (
-            <CreateTodoList
-                list={activeTodo}
-                onClickComplete={handleCompleted}
-                onClickDelete={handleDelete}
-                handleMissed={handleMissed}
-            />
-        );
+        if (activeTodo.length > 0) {
+            return (
+                <CreateTodoList
+                    list={activeTodo}
+                    onClickComplete={handleCompleted}
+                    onClickDelete={handleDelete}
+                    handleMissed={handleMissed}
+                />
+            );
+        } else {
+            return <CreateTodoList empty={true} listfor="active" />;
+        }
     }
 
     function CompletedTodosList() {
-        return (
-            <CreateTodoList
-                list={completedTodo}
-                onClickComplete={handleCompleted}
-                onClickDelete={handleDelete}
-            />
-        );
+        if (completedTodo.length > 0) {
+            return (
+                <CreateTodoList
+                    list={completedTodo}
+                    onClickComplete={handleCompleted}
+                    onClickDelete={handleDelete}
+                />
+            );
+        } else {
+            return <CreateTodoList empty={true} listfor="completed" />;
+        }
     }
 
     function MissedTodosList() {
-        return (
-            <CreateTodoList
-                list={missedTodo}
-                onClickComplete={handleCompleted}
-                onClickDelete={handleDelete}
-            />
-        );
+        if (missedTodo.length > 0) {
+            return (
+                <CreateTodoList
+                    list={missedTodo}
+                    onClickComplete={handleCompleted}
+                    onClickDelete={handleDelete}
+                />
+            );
+        } else {
+            return <CreateTodoList empty={true} listfor="missed" />;
+        }
     }
 
     return (
