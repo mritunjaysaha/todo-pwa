@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { set, get } from "idb-keyval";
-import SimpleTabs from "./simple-tab.component";
 import AddTodo from "./popupbutton.component";
 import CreateTodoList from "./list-item.component";
+import AntdTab from "./ant-tabs.component";
+
 import "../styles/main.css";
 import "date-fns/locale";
 
@@ -24,16 +25,6 @@ export default function CenteredTabs() {
             await get("todo").then((val) => {
                 if (val != null) {
                     setItems(val);
-
-                    //  val.map((v) => {
-                    //     if (v.status === "active") {
-                    //         active.push(v);
-                    //     } else if (v.status === "completed") {
-                    //         completed.push(v);
-                    //     } else if (v.status === "missed") {
-                    //         missed.push(v);
-                    //     }
-                    // });
 
                     for (let i = 0; i < val.length; i++) {
                         if (val[i].status === "active") {
@@ -103,14 +94,6 @@ export default function CenteredTabs() {
         set("todo", filteredItems);
     }
     function handleCompleted(id) {
-        // items.map((i) => {
-        //     if (i.id === id) {
-        //         i.status = "completed";
-        //         const data = [...completedTodo, i];
-        //         setCompletedTodo(data);
-        //     }
-        // });
-
         for (let i = 0; i < items.length; i++) {
             if (items[i].id === id) {
                 items[i].status = "completed";
@@ -172,7 +155,8 @@ export default function CenteredTabs() {
                 handleInput={handleInput}
                 addTask={addTask}
             />
-            <SimpleTabs
+
+            <AntdTab
                 activelist={ActiveTodosList}
                 completedlist={CompletedTodosList}
                 missedlist={MissedTodosList}
