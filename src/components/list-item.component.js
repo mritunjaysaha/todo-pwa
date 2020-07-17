@@ -31,19 +31,23 @@ export default function CreateTodoList(props) {
             );
         }
     } else {
-        todolist = list.map((todo) => (
+        return (
             <div className="cards-container">
-                <Cards
-                    status={todo.status}
-                    id={todo.id}
-                    text={todo.text}
-                    deadline={todo.deadline}
-                    onClickComplete={props.onClickComplete}
-                    onDelete={props.onClickDelete}
-                    handleMissed={props.handleMissed}
-                />
+                {
+                    (todolist = list.map((todo) => (
+                        <Cards
+                            status={todo.status}
+                            id={todo.id}
+                            text={todo.text}
+                            deadline={todo.deadline}
+                            onClickComplete={props.onClickComplete}
+                            onDelete={props.onClickDelete}
+                            handleMissed={props.handleMissed}
+                        />
+                    )))
+                }
             </div>
-        ));
+        );
     }
 
     return <>{todolist}</>;
